@@ -1,0 +1,20 @@
+{
+  "semi": false,
+  "singleQuote": false,
+  "sortImports": {
+    "groups": [
+      "type",
+      "builtin",
+      "external",
+      ["internal", "subpath"],
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ],
+    "newlinesBetween": true
+  },
+  "sortTailwindcss": {
+    "stylesheet": "./packages/ui/src/styles/globals.css",
+    "functions": ["clsx", "cn", "cva", "tw", "twMerge"]
+  }
+}

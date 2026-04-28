@@ -7,8 +7,12 @@
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "strict": true,
-    "outDir": "dist"
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/interactions/*": ["./src/*"]
+    }
   },
-  "include": ["src", "turbo"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
