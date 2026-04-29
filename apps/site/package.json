@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@mux/mux-player-react": "^3.13.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-router": "^1.167.0",
     "@tanstack/react-start": "^1.167.0",
