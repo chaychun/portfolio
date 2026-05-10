@@ -5,5 +5,11 @@
     "correctness": "error"
   },
   "rules": {},
-  "ignorePatterns": ["**/.output", "**/dist", "**/node_modules", "**/routeTree.gen.ts"]
+  "ignorePatterns": [
+    "**/.output",
+    "**/dist",
+    "**/node_modules",
+    "**/routeTree.gen.ts",
+    ".claude/**"
+  ]
 }
