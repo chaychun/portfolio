@@ -148,8 +148,8 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--brand);
-    color: var(--brand-foreground);
+    background: #0c0a09;
+    color: #fafaf9;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
