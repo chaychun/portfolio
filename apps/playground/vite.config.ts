@@ -5,6 +5,10 @@ import { defineConfig } from "vite"
 import viteTsConfigPaths from "vite-tsconfig-paths"
 
 const config = defineConfig({
+  server: {
+    port: Number(process.env.PORT) || 3001,
+    strictPort: false,
+  },
   plugins: [
     viteTsConfigPaths({
       projects: ["./tsconfig.json"],

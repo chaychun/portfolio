@@ -6,6 +6,10 @@ import { defineConfig } from "vite"
 import viteTsConfigPaths from "vite-tsconfig-paths"
 
 const config = defineConfig({
+  server: {
+    port: Number(process.env.PORT) || 3000,
+    strictPort: false,
+  },
   plugins: [
     nitro(),
     viteTsConfigPaths({
