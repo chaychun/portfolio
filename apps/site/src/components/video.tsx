@@ -52,7 +52,14 @@ export function Video({ style, ...props }: VideoProps) {
       disableTracking
       disableCookies
       streamType="on-demand"
-      style={{ "--controls": "none", ...style }}
+      thumbnailTime={0}
+      style={{
+        "--controls": "none",
+        "--media-background-color": "#fafaf9",
+        "--controls-backdrop-color": "transparent",
+        backgroundColor: "#fafaf9",
+        ...style,
+      }}
       {...props}
     />
   )
