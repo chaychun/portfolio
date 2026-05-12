@@ -10,7 +10,7 @@ type InteractionCardProps = {
 export function InteractionCard({ interaction }: InteractionCardProps) {
   const hasVideo = interaction.playbackId !== ""
   return (
-    <a href="#" className="group grid cursor-pointer gap-5">
+    <div className="grid gap-5">
       <div className="relative aspect-[4/3] overflow-hidden">
         {hasVideo ? (
           <Video
@@ -36,6 +36,6 @@ export function InteractionCard({ interaction }: InteractionCardProps) {
           <MarkdownText>{interaction.description}</MarkdownText>
         </span>
       </div>
-    </a>
+    </div>
   )
 }
