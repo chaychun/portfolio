@@ -21,6 +21,7 @@
     "postinstall": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "oxfmt": "latest",
     "oxlint": "^1.0.0",
     "oxlint-tailwindcss": "latest",
