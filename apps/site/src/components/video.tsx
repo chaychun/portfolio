@@ -1,6 +1,5 @@
-import { useEffect, useState, type ComponentProps, type ComponentRef } from "react"
-
 import MuxPlayer from "@mux/mux-player-react/lazy"
+import { useEffect, useState, type ComponentProps, type ComponentRef } from "react"
 
 type MuxPlayerProps = ComponentProps<typeof MuxPlayer>
 
