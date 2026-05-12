@@ -3,18 +3,17 @@ import { motion } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 
 import { Placeholder } from "@/components/placeholder"
+import { Video } from "@/components/video"
 
-export type StorySlide =
-  | {
-      kind: "image"
-      src?: string
-      label?: string
-    }
-  | {
-      kind: "video"
-      playbackId?: string
-      label?: string
-    }
+export type StorySlide = string
+
+type SlideKind = "image" | "video" | "placeholder"
+
+function detectKind(slide: StorySlide | undefined): SlideKind {
+  if (!slide) return "placeholder"
+  if (slide.includes("/") || slide.includes(".")) return "image"
+  return "video"
+}
 
 export type StoryCarousel = {
   active: number
@@ -75,9 +74,9 @@ export function StoryHero({ story, className }: StoryHeroProps) {
   useEffect(() => {
     if (typeof window === "undefined") return
     for (const s of slides) {
-      if (s.kind === "image" && s.src) {
+      if (detectKind(s) === "image") {
         const img = new window.Image()
-        img.src = s.src
+        img.src = s
       }
     }
   }, [slides])
@@ -135,7 +134,7 @@ function CrossfadeLayer({ slide, index, total, animate, onEntered }: CrossfadeLa
     return () => cancelAnimationFrame(id)
   }, [animate])
 
-  const label = slide?.label ?? `slide ${index + 1}/${total} · ${slide?.kind ?? "image"}`
+  const kind = detectKind(slide)
 
   return (
     <div
@@ -149,7 +148,17 @@ function CrossfadeLayer({ slide, index, total, animate, onEntered }: CrossfadeLa
         if (opacity === 1) onEntered()
       }}
     >
-      <Placeholder label={label} />
+      {kind === "image" && slide ? (
+        <img src={slide} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      ) : kind === "video" && slide ? (
+        <Video
+          playbackId={slide}
+          className="absolute inset-0 h-full w-full"
+          style={{ "--media-object-fit": "cover" }}
+        />
+      ) : (
+        <Placeholder label={`slide ${index + 1}/${total}`} />
+      )}
     </div>
   )
 }
