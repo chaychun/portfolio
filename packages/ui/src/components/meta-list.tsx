@@ -16,8 +16,8 @@ export function MetaList({ items, className, ...props }: MetaListProps) {
     <dl className={cn("grid gap-5", className)} {...props}>
       {items.map((item) => (
         <div key={item.label} className="grid grid-cols-[120px_1fr] gap-4 text-sm leading-6">
-          <dt className="pt-[3px] text-sm text-muted-foreground">{item.label}</dt>
-          <dd className="m-0 text-foreground">{item.value}</dd>
+          <dt className="pt-[3px] text-sm text-foreground">{item.label}</dt>
+          <dd className="m-0 text-muted-foreground">{item.value}</dd>
         </div>
       ))}
     </dl>

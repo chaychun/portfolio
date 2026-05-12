@@ -13,7 +13,7 @@ export function WorkProgress({ active, total = 7 }: WorkProgressProps) {
           key={i}
           className={cn(
             "h-[2px] flex-1 rounded-[2px]",
-            i === active ? "flex-[0_0_36px] bg-foreground" : "bg-border",
+            i === active ? "flex-[0_0_36px] bg-brand" : "bg-border",
           )}
         />
       ))}

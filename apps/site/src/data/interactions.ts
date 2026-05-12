@@ -3,110 +3,53 @@ export type Interaction = {
   title: string
   description: string
   playbackId: string
-  duration?: string
-  tags?: string[]
-  poster?: string
-  date: string
 }
 
 export const interactions: Interaction[] = [
   {
-    slug: "magnetic-dock-cursor",
-    title: "Magnetic dock cursor",
+    slug: "page-stack",
+    title: "Page stack",
     description:
-      "A pointer that gently snaps to nearby targets, then lets go without overshooting.",
-    playbackId: "",
-    duration: "12s",
-    date: "2025-11",
+      "Experimental hypertext navigation where new pages are stacked on a book-like interface for showing a visual, linear exploration trail through a non-linear network. Based on pattern popularized by [Andy Matuschak](https://notes.andymatuschak.org/)",
+    playbackId: "CiIsMfdPuZ63u700aDunnpbDXKWJCkThNWGw8zoEMlKg",
   },
   {
-    slug: "springy-folder-unfurl",
-    title: "Springy folder unfurl",
-    description: "Nested folders that open in a soft, settled spring rather than a hard cut.",
-    playbackId: "",
-    duration: "09s",
-    date: "2025-10",
+    slug: "polaroid-carousel",
+    title: "Polaroid carousel",
+    description: "A stack of cards that expands into a gesture-based carousel modal.",
+    playbackId: "JVJ601pnLybEMZtJ01CF7WrTuXk7hzUT01t00vOLrJHnl5U",
   },
   {
-    slug: "token-streaming-text",
-    title: "Token-by-token streaming text",
-    description: "Each token settles into the line with its own quiet, frame-perfect micro-motion.",
-    playbackId: "",
-    duration: "18s",
-    date: "2025-09",
-  },
-  {
-    slug: "inline-command-bar",
-    title: "Inline command bar",
-    description: "Slash, type, run — a command surface that lives inside the line you're writing.",
-    playbackId: "",
-    duration: "11s",
-    date: "2025-08",
-  },
-  {
-    slug: "drag-to-summon-palette",
-    title: "Drag-to-summon palette",
-    description: "Pull from the edge of the canvas to surface a contextual palette of actions.",
-    playbackId: "",
-    duration: "14s",
-    date: "2025-06",
-  },
-  {
-    slug: "soft-snap-scrubber",
-    title: "Soft-snap timeline scrubber",
-    description: "Frame-aware scrubbing that gently lands on the beats you actually care about.",
-    playbackId: "",
-    duration: "08s",
-    date: "2025-05",
-  },
-  {
-    slug: "multi-cursor-presence",
-    title: "Multi-cursor presence",
-    description: "Live cursors that feel like people in the room, not labels parked on the page.",
-    playbackId: "",
-    duration: "22s",
-    date: "2025-04",
-  },
-  {
-    slug: "scroll-pinned-chapter-index",
-    title: "Scroll-pinned chapter index",
-    description: "A quiet index that follows you down the page and stays where you can find it.",
-    playbackId: "",
-    duration: "10s",
-    date: "2025-03",
-  },
-  {
-    slug: "gesture-driven-zoom",
-    title: "Gesture-driven zoom",
+    slug: "ios-camera-capture",
+    title: "iOS camera capture",
     description:
-      "Pinch and pan flow as one continuous, deceleration-aware motion across the canvas.",
-    playbackId: "",
-    duration: "15s",
-    date: "2025-01",
+      "Capture mode selector with gesture-based controls inspired by the iOS camera app.",
+    playbackId: "suT7Az9GNduIq00A00f3yN9eIo00u8gses3k5cjwzrzwJA",
   },
   {
-    slug: "toast-stack-choreography",
-    title: "Toast stack choreography",
+    slug: "expandable-notifications",
+    title: "Expandable notifications",
     description:
-      "Notifications that politely make room for each other instead of stacking like cards.",
-    playbackId: "",
-    duration: "07s",
-    date: "2024-12",
+      "Expandable notification with multipurpose panel. Built on top of a dropdown component from [Morphin](https://morphin.dev/components/activity-dropdown).",
+    playbackId: "go01NVJMfIhy9HUw7ioY3oDzG5ulJkJw8jPqYm1NzPV4",
   },
   {
-    slug: "ambient-audio-meter",
-    title: "Ambient audio meter",
-    description: "A level meter that responds with motion and weight rather than running numbers.",
-    playbackId: "",
-    duration: "13s",
-    date: "2024-11",
+    slug: "variable-font-selector",
+    title: "Variable font selector",
+    description:
+      "A category selector that uses variable font weight and size to indicate the active item.",
+    playbackId: "YaL9f5Ejr3ytVZxRYhuELKTnyp2rt6KpkI202fqDoepA",
   },
   {
-    slug: "keyboard-first-reorder",
-    title: "Keyboard-first reorder",
-    description: "Reordering long lists without ever lifting your hands from the keyboard.",
-    playbackId: "",
-    duration: "19s",
-    date: "2024-10",
+    slug: "morphing-pill-button",
+    title: "Morphing pill button",
+    description: "Pill button background morphs into a circular state indicator.",
+    playbackId: "ucp486aqhZwRevisrYj1gloezMd15VaDusumjtT6zUs",
+  },
+  {
+    slug: "onboarding-name-input",
+    title: "Onboarding name input",
+    description: "Stateful input with a playful success state.",
+    playbackId: "ew583FWJDTpSEnHQuHN100LM5o2u6cD2CN00eneTU22Yo",
   },
 ]

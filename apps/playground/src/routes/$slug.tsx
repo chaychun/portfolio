@@ -22,7 +22,7 @@ function SlugPage() {
           <p className="text-sm text-muted-foreground">{module.meta.description}</p>
         )}
       </header>
-      <div className="rounded-lg border p-8">
+      <div className="relative flex min-h-[480px] items-center justify-center overflow-hidden rounded-lg border">
         <Component />
       </div>
     </main>

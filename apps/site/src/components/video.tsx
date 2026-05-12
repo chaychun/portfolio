@@ -19,7 +19,7 @@ export type VideoProps = Omit<
   playbackId: string
 }
 
-export function Video(props: VideoProps) {
+export function Video({ style, ...props }: VideoProps) {
   return (
     <MuxPlayer
       autoPlay="muted"
@@ -30,7 +30,7 @@ export function Video(props: VideoProps) {
       disableTracking
       disableCookies
       streamType="on-demand"
-      style={{ "--controls": "none" }}
+      style={{ "--controls": "none", ...style }}
       {...props}
     />
   )

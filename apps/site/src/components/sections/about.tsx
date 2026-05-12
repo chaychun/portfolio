@@ -3,6 +3,8 @@ import { Lede } from "@workspace/ui/components/lede"
 import { MetaList } from "@workspace/ui/components/meta-list"
 import { Section } from "@workspace/ui/components/section"
 
+import { Link } from "@/components/link"
+
 const REACH_OUT_LINKS = [
   {
     label: "Email",
@@ -29,13 +31,9 @@ const META = [
     value: (
       <span className="flex flex-wrap items-center gap-4">
         {REACH_OUT_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="underline decoration-border underline-offset-4 transition-colors hover:decoration-muted-foreground"
-          >
+          <Link key={link.label} href={link.href}>
             {link.label}
-          </a>
+          </Link>
         ))}
       </span>
     ),
@@ -50,8 +48,8 @@ export function AboutSection() {
           <MetaList items={META} className="order-2 cols:order-1" />
           <div className="order-1 cols:order-2">
             <Lede variant="lead" className="mb-7">
-              Hi, I'm <em className="text-muted-foreground not-italic">Chayut</em>. I design and
-              build calm, opinionated software.
+              Hi, I'm <em className="text-brand not-italic">Chayut</em>. I design and build calm,
+              opinionated software.
             </Lede>
             <Lede className="mb-4">
               I believe great software should enhance human cognition, not deplete it. My goal is to

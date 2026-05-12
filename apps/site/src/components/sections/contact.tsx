@@ -1,6 +1,8 @@
 import { Container } from "@workspace/ui/components/container"
 import { Section } from "@workspace/ui/components/section"
 
+import { Link } from "@/components/link"
+
 const FOOTER_LINKS = [
   { label: "Email", href: "mailto:chun.chayut@gmail.com" },
   { label: "Threads", href: "https://www.threads.com/@chun.chayut" },
@@ -15,13 +17,9 @@ export function ContactSection() {
           <span>© 2026 Chayut Chunsamphran</span>
           <span className="flex items-center gap-4">
             {FOOTER_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="underline decoration-border underline-offset-4 transition-colors hover:decoration-muted-foreground"
-              >
+              <Link key={link.label} href={link.href} variant="quiet">
                 {link.label}
-              </a>
+              </Link>
             ))}
           </span>
         </div>

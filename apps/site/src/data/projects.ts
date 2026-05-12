@@ -30,14 +30,4 @@ export const projects: Project[] = [
     link: "#",
     date: "2025-07",
   },
-  {
-    slug: "quietly",
-    title: "Quietly",
-    role: "A small, opinionated home for the things you save.",
-    tags: ["Brand", "Product", "Design Engineering"],
-    description:
-      "Sed do eiusmod tempor incididunt ut labore. Designed and engineered a personal-use bookmarking app from a single Figma file to a v1 launched on the App Store. Wrote the marketing site, the onboarding, and the AppleScript-flavoured search — and held the whole thing together with one designer-illustrator and one weekend-iOS contractor.",
-    link: "#",
-    date: "2025-02",
-  },
 ]
