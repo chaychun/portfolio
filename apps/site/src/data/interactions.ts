@@ -65,4 +65,11 @@ export const interactions: Interaction[] = [
     description: "Stateful input with a playful success state.",
     playbackId: "ew583FWJDTpSEnHQuHN100LM5o2u6cD2CN00eneTU22Yo",
   },
+  {
+    slug: "parallax-list",
+    title: "Parallax list",
+    description:
+      "Using mouse position to control list instead of scroll, giving a parallax-like effect.",
+    playbackId: "rHaqkBd00c93COF69RI1b5dHecCrGFDHxJAiTO6QFaYg",
+  },
 ]
