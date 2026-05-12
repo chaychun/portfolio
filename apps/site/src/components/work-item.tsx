@@ -3,23 +3,19 @@ import type { Project } from "@/data/projects"
 import { Fragment } from "react"
 
 import { MarkdownText } from "@/components/markdown-text"
-import { WorkIndex } from "@/components/work-index"
 import { StoryBars, StoryHero, useStoryCarousel } from "@/components/work-story"
 
 type WorkItemProps = {
   project: Project
-  index: number
-  total: number
 }
 
-export function WorkItem({ project, index, total }: WorkItemProps) {
+export function WorkItem({ project }: WorkItemProps) {
   const story = useStoryCarousel(project.media)
 
   return (
     <article className="grid gap-8">
       <div className="relative">
         <StoryHero story={story} />
-        <WorkIndex index={index} total={total} />
       </div>
       <div className="grid items-start gap-x-[var(--container-gutter)] gap-y-8 cols:grid-cols-2">
         <div>

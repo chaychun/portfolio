@@ -7,7 +7,6 @@ import { Section } from "@workspace/ui/components/section"
 import { InteractionGrid } from "@/components/interaction-grid"
 import { WorkItem } from "@/components/work-item"
 import { feed } from "@/data/feed"
-import { projects } from "@/data/projects"
 
 type Group =
   | { kind: "project"; slug: string; project: FeedEntry & { kind: "project" } }
@@ -39,7 +38,6 @@ function groupFeed(entries: FeedEntry[]): Group[] {
 
 export function WorkSection() {
   const groups = groupFeed(feed)
-  const projectIndex = new Map(projects.map((p, i) => [p.slug, i + 1]))
 
   return (
     <Section id="work" screenLabel="Work">
@@ -47,12 +45,7 @@ export function WorkSection() {
         <div className="grid gap-22 cols:gap-[180px]">
           {groups.map((group) =>
             group.kind === "project" ? (
-              <WorkItem
-                key={group.slug}
-                project={group.project.data}
-                index={projectIndex.get(group.slug) ?? 1}
-                total={projects.length}
-              />
+              <WorkItem key={group.slug} project={group.project.data} />
             ) : (
               <InteractionGrid key={group.key} interactions={group.items} />
             ),

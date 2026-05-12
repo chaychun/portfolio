@@ -12,11 +12,7 @@ export type Project = {
   media: StorySlide[]
 }
 
-const placeholderSlides = (count: number): StorySlide[] =>
-  Array.from({ length: count }, (_, i) => ({
-    kind: "image" as const,
-    label: `slide ${i + 1}/${count}`,
-  }))
+const placeholderSlides = (count: number): StorySlide[] => Array.from({ length: count }, () => "")
 
 export const projects: Project[] = [
   {
@@ -28,7 +24,10 @@ export const projects: Project[] = [
       "Prototype of an encyclopedia where all articles are generated on-demand by LLMs. No permanent knowledge base or storage. Every entry can be tailored to the reader's persona and reading level on a subject-to-subject basis.",
     link: "#",
     date: "2026-05",
-    media: placeholderSlides(5),
+    media: [
+      "jmh7HV3Gfm8ns7ug76f4g1QI9GGyWdDY00MiXloSHyDw",
+      "BaAu00m59jDEupNy9C01yzXiwTkWE6nlpadzVlL3AnJ7w",
+    ],
   },
   {
     slug: "mula",
@@ -39,6 +38,8 @@ export const projects: Project[] = [
       "Mula is designed to help you learn how to code by providing tailored lessons and in-flow coding exercises. Powered by Claude Agent SDK, Mula adapts to your learning style and progress as you learn and complete exercises. Built to replace passive tutorial-watching with active, tailored practice.",
     link: "#",
     date: "2025-07",
+    // TODO: real assets pending — filming after polish pass. Swap in alongside the
+    // remaining projects (to be added at the same time).
     media: placeholderSlides(8),
   },
 ]
