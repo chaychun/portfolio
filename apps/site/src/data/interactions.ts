@@ -34,6 +34,12 @@ export const interactions: Interaction[] = [
     playbackId: "go01NVJMfIhy9HUw7ioY3oDzG5ulJkJw8jPqYm1NzPV4",
   },
   {
+    slug: "wave-hello",
+    title: "Wave hello",
+    description: "Psst ... try clicking my name up top.",
+    playbackId: "aI02022J00faukzRYMmVnzH3LJnS4Isp6ixc01f7BkA2cl00",
+  },
+  {
     slug: "variable-font-selector",
     title: "Variable font selector",
     description:

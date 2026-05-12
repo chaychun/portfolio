@@ -4,6 +4,7 @@ import { MetaList } from "@workspace/ui/components/meta-list"
 import { Section } from "@workspace/ui/components/section"
 
 import { Link } from "@/components/link"
+import { WaveName } from "@/components/wave-name"
 
 const REACH_OUT_LINKS = [
   {
@@ -48,8 +49,7 @@ export function AboutSection() {
           <MetaList items={META} className="order-2 cols:order-1" />
           <div className="order-1 cols:order-2">
             <Lede variant="lead" className="mb-7">
-              Hi, I'm <em className="text-brand not-italic">Chayut</em>. I design and build calm,
-              opinionated software.
+              Hi, I'm <WaveName>Chayut</WaveName>. I design and build calm, opinionated software.
             </Lede>
             <Lede className="mb-4">
               I believe great software should enhance human cognition, not deplete it. My goal is to
