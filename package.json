@@ -11,6 +11,7 @@
     "dev": "turbo dev",
     "playground": "turbo run dev --filter=playground",
     "site": "turbo run dev --filter=site",
+    "agent-dev": "bun scripts/agent-dev.ts",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
