@@ -40,6 +40,13 @@ export const interactions: Interaction[] = [
     playbackId: "aI02022J00faukzRYMmVnzH3LJnS4Isp6ixc01f7BkA2cl00",
   },
   {
+    slug: "testimonial-stack",
+    title: "Testimonial stack",
+    description:
+      "Stack of review cards with gesture interaction. Built for [Thai Bus Food Tour](https://www.thaibusfoodtour.co.th/)",
+    playbackId: "N00UbEvTw7JeMrOs9plJSE6v5bXqcOQA00Z6VDVR01G9Cg",
+  },
+  {
     slug: "variable-font-selector",
     title: "Variable font selector",
     description:
