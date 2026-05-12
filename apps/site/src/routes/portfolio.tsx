@@ -3,9 +3,11 @@ import { Button } from "@workspace/ui/components/button"
 import { Switch } from "@workspace/ui/components/switch"
 import { useState } from "react"
 
+const DEV_LABEL_ACTIVE = !!(import.meta.env.DEV && import.meta.env.VITE_DEV_LABEL)
+
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
-    meta: [{ title: "Chayut Chunsamphran — Resume" }],
+    meta: DEV_LABEL_ACTIVE ? [] : [{ title: "Chayut Chunsamphran — Resume" }],
   }),
   component: Portfolio,
 })

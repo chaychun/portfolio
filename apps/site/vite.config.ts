@@ -10,6 +10,9 @@ const config = defineConfig({
     port: Number(process.env.PORT) || 3000,
     strictPort: false,
   },
+  define: {
+    "import.meta.env.VITE_DEV_LABEL": JSON.stringify(process.env.VITE_DEV_LABEL ?? ""),
+  },
   plugins: [
     nitro(),
     viteTsConfigPaths({

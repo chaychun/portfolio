@@ -1,6 +1,5 @@
 #!/usr/bin/env bun
 import { spawn } from "node:child_process"
-import { basename } from "node:path"
 
 const APPS = new Set(["site", "playground"])
 
@@ -13,7 +12,12 @@ for (const arg of args) {
   else if (!label) label = arg
 }
 
-label ??= process.env.VITE_DEV_LABEL || basename(process.cwd())
+if (!label || !label.trim()) {
+  console.error(
+    'agent-dev: missing label. Usage: bun run agent-dev "<short-label>" [site|playground]',
+  )
+  process.exit(1)
+}
 
 console.log(`[agent-dev] label="${label}" app="${app}"`)
 
