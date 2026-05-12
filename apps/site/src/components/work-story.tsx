@@ -179,15 +179,19 @@ export function StoryBars({ story, className }: StoryBarsProps) {
           aria-label={`Go to slide ${i + 1}`}
           aria-current={i === active ? "true" : undefined}
           onClick={() => goTo(i)}
-          className="relative h-[3px] flex-1 cursor-pointer overflow-hidden rounded-full bg-stone-300 before:absolute before:inset-x-0 before:-top-3 before:-bottom-3 before:content-['']"
+          className="relative h-[3px] flex-1 cursor-pointer before:absolute before:inset-x-0 before:-top-3 before:-bottom-3 before:content-['']"
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-brand"
-            style={{
-              transform: `translateX(calc((var(--bar-i) - ${i}) * (100% + ${BAR_GAP}px)))`,
-            }}
-          />
+            className="pointer-events-none absolute inset-0 overflow-hidden rounded-full bg-stone-300"
+          >
+            <span
+              className="absolute inset-0 bg-brand"
+              style={{
+                transform: `translateX(calc((var(--bar-i) - ${i}) * (100% + ${BAR_GAP}px)))`,
+              }}
+            />
+          </span>
         </button>
       ))}
     </motion.div>
