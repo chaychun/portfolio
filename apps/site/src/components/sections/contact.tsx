@@ -8,6 +8,7 @@ const FOOTER_LINKS = [
   { label: "Email", href: "mailto:chun.chayut@gmail.com" },
   { label: "Threads", href: "https://www.threads.com/@chun.chayut" },
   { label: "GitHub", href: "https://github.com/chaychun" },
+  { label: "Resume", href: "/resume" },
 ]
 
 export function ContactSection() {

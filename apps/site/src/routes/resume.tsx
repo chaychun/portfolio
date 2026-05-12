@@ -5,7 +5,7 @@ import { useState } from "react"
 
 const DEV_LABEL_ACTIVE = !!(import.meta.env.DEV && import.meta.env.VITE_DEV_LABEL)
 
-export const Route = createFileRoute("/portfolio")({
+export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: DEV_LABEL_ACTIVE ? [] : [{ title: "Chayut Chunsamphran — Resume" }],
   }),

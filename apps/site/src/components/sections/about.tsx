@@ -19,6 +19,10 @@ const REACH_OUT_LINKS = [
     label: "GitHub",
     href: "https://github.com/chaychun",
   },
+  {
+    label: "Resume",
+    href: "/resume",
+  },
 ]
 
 const META = [
