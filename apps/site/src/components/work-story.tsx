@@ -91,7 +91,7 @@ export function StoryHero({ story, className }: StoryHeroProps) {
   }
 
   return (
-    <div className={cn("relative aspect-[4/3] cols:aspect-[16/9] overflow-hidden", className)}>
+    <div className={cn("relative aspect-[4/3] overflow-hidden cols:aspect-[16/9]", className)}>
       {layers.map((layer) => (
         <CrossfadeLayer
           key={layer.key}
