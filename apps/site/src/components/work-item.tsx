@@ -3,9 +3,8 @@ import type { Project } from "@/data/projects"
 import { Fragment } from "react"
 
 import { MarkdownText } from "@/components/markdown-text"
-import { Placeholder } from "@/components/placeholder"
 import { WorkIndex } from "@/components/work-index"
-import { WorkProgress } from "@/components/work-progress"
+import { StoryBars, StoryHero, useStoryCarousel } from "@/components/work-story"
 
 type WorkItemProps = {
   project: Project
@@ -14,15 +13,17 @@ type WorkItemProps = {
 }
 
 export function WorkItem({ project, index, total }: WorkItemProps) {
+  const story = useStoryCarousel(project.media)
+
   return (
     <article className="grid gap-8">
-      <div className="relative aspect-[16/9] overflow-hidden">
-        <Placeholder label={`${project.slug} · hero · 2400 × 1350`} />
+      <div className="relative">
+        <StoryHero story={story} />
         <WorkIndex index={index} total={total} />
       </div>
       <div className="grid items-start gap-x-[var(--container-gutter)] gap-y-8 cols:grid-cols-2">
         <div>
-          <WorkProgress active={index - 1} total={Math.max(7, total)} />
+          <StoryBars story={story} />
           <h3 className="text-work-title">
             {project.title} <span className="text-muted-foreground">— {project.role}</span>
           </h3>
