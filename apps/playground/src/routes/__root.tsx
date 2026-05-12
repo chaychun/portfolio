@@ -3,12 +3,14 @@ import { useEffect } from "react"
 
 import appCss from "@workspace/ui/globals.css?url"
 
+const DEV_LABEL_ACTIVE = !!(import.meta.env.DEV && import.meta.env.VITE_DEV_LABEL)
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Playground" },
+      ...(DEV_LABEL_ACTIVE ? [] : [{ title: "Playground" }]),
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
@@ -35,13 +37,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   )
 }
 
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "0.0.0.0", "::1"])
+
 function DevTitle() {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   useEffect(() => {
-    if (!import.meta.env.DEV) return
-    const label = import.meta.env.VITE_DEV_LABEL
-    if (!label) return
-    document.title = `${label} — ${pathname}`
+    if (!DEV_LABEL_ACTIVE) return
+    if (!LOCAL_HOSTS.has(window.location.hostname)) return
+    document.title = `${import.meta.env.VITE_DEV_LABEL} - ${window.location.href}`
   }, [pathname])
   return null
 }
