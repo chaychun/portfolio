@@ -1,6 +1,5 @@
-import { useState } from "react"
-
 import { cn } from "@workspace/ui/lib/utils"
+import { useState } from "react"
 
 import { Placeholder } from "@/components/placeholder"
 
@@ -45,12 +44,11 @@ type StoryHeroProps = {
 
 export function StoryHero({ story, className }: StoryHeroProps) {
   const { current, active, total, next, prev } = story
-  const label =
-    current?.label ?? `slide ${active + 1}/${total} · ${current?.kind ?? "image"}`
+  const label = current?.label ?? `slide ${active + 1}/${total} · ${current?.kind ?? "image"}`
 
   return (
     <div className={cn("relative aspect-[16/9] overflow-hidden", className)}>
-      <div key={active} className="absolute inset-0 animate-in fade-in duration-300 ease-out">
+      <div key={active} className="absolute inset-0 animate-in duration-300 ease-out fade-in">
         <Placeholder label={label} />
       </div>
       <button
