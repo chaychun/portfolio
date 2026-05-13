@@ -49,10 +49,20 @@ export function AboutSection() {
   return (
     <Section id="about" screenLabel="About" className="pt-24 pb-20 cols:pt-30">
       <Container>
-        <div className="grid items-end gap-x-[var(--container-gutter)] gap-y-8 cols:grid-cols-2">
-          <MetaList items={META} className="order-2 cols:order-1" />
-          <div className="order-1 cols:order-2">
-            <Lede variant="lead" className="mb-7">
+        <div className="grid gap-x-[var(--container-gutter)] gap-y-8 cols:grid-cols-2 cols:grid-rows-[auto_1fr] cols:items-end">
+          <div
+            aria-hidden
+            className="order-1 size-5 rounded-full bg-brand cols:col-start-1 cols:row-start-1"
+          />
+          <MetaList
+            items={META}
+            className="order-3 cols:col-start-1 cols:row-start-2 cols:self-end"
+          />
+          <div className="order-2 cols:col-start-2 cols:row-span-2 cols:row-start-1">
+            <Lede
+              variant="lead"
+              className="mb-7 [text-box-edge:cap_alphabetic] [text-box-trim:trim-start]"
+            >
               Hi, I'm <WaveName>Chayut</WaveName>. I design and build calm, opinionated software.
             </Lede>
             <Lede className="mb-4">
