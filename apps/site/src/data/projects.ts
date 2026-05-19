@@ -16,8 +16,6 @@ export type Project = {
   ctas?: ProjectCta[]
 }
 
-const placeholderSlides = (count: number): StorySlide[] => Array.from({ length: count }, () => "")
-
 export const projects: Project[] = [
   {
     slug: "generated-wiki",
@@ -36,17 +34,16 @@ export const projects: Project[] = [
       { label: "View on GitHub", href: "https://github.com/chaychun/generated-wiki" },
     ],
   },
-  {
-    slug: "mula",
-    title: "Mula",
-    role: "Tailored experience for learning how to code.",
-    tags: ["Product", "Design", "Engineering"],
-    description:
-      "Mula is designed to help you learn how to code by providing tailored lessons and in-flow coding exercises. Powered by Claude Agent SDK, Mula adapts to your learning style and progress as you learn and complete exercises. Built to replace passive tutorial-watching with active, tailored practice.",
-    date: "2025-07",
-    // TODO: real assets pending — filming after polish pass. Swap in alongside the
-    // remaining projects (to be added at the same time).
-    media: placeholderSlides(8),
-    ctas: [{ label: "View on GitHub", href: "https://github.com/chaychun/mula" }],
-  },
+  // TODO: re-enable Mula once visuals are ready.
+  // {
+  //   slug: "mula",
+  //   title: "Mula",
+  //   role: "Tailored experience for learning how to code.",
+  //   tags: ["Product", "Design", "Engineering"],
+  //   description:
+  //     "Mula is designed to help you learn how to code by providing tailored lessons and in-flow coding exercises. Powered by Claude Agent SDK, Mula adapts to your learning style and progress as you learn and complete exercises. Built to replace passive tutorial-watching with active, tailored practice.",
+  //   date: "2025-07",
+  //   media: placeholderSlides(8),
+  //   ctas: [{ label: "View on GitHub", href: "https://github.com/chaychun/mula" }],
+  // },
 ]
