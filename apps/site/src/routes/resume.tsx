@@ -359,9 +359,9 @@ function Portfolio() {
                 <div className="flex flex-wrap items-baseline gap-4">
                   <span className="role-line">Mula</span>
                   <span className="meta flex items-center gap-4">
-                    <a href="https://github.com/chaychun/coding-tutor" className="gh-link">
+                    <a href="https://github.com/chaychun/mula" className="gh-link">
                       <GhIcon />
-                      <span>chaychun/coding-tutor</span>
+                      <span>chaychun/mula</span>
                     </a>
                   </span>
                 </div>

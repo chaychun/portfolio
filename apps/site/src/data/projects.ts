@@ -47,6 +47,6 @@ export const projects: Project[] = [
     // TODO: real assets pending — filming after polish pass. Swap in alongside the
     // remaining projects (to be added at the same time).
     media: placeholderSlides(8),
-    ctas: [{ label: "View on GitHub", href: "https://github.com/chaychun/coding-tutor" }],
+    ctas: [{ label: "View on GitHub", href: "https://github.com/chaychun/mula" }],
   },
 ]
