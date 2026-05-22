@@ -29,7 +29,7 @@ const META = [
   { label: "Based", value: "Bangkok, Thailand" },
   {
     label: "Open to",
-    value: "Frontend/design engineering roles, project-based commissions",
+    value: "Software & design engineering roles",
   },
   {
     label: "Reach out",
