@@ -145,14 +145,17 @@ const css = `
 
   .resume-root .gh-link,
   .resume-root .web-link,
-  .resume-root .mail-link {
+  .resume-root .mail-link,
+  .resume-root .tel-link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
   }
+  .resume-root .tel-link { color: #a8a29e; }
   .resume-root .gh-icon,
   .resume-root .web-icon,
-  .resume-root .mail-icon {
+  .resume-root .mail-icon,
+  .resume-root .tel-icon {
     width: 11px;
     height: 11px;
     display: block;
@@ -239,6 +242,24 @@ function WebIcon() {
   )
 }
 
+function TelIcon() {
+  return (
+    <svg
+      className="tel-icon"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  )
+}
+
 function MailIcon() {
   return (
     <svg
@@ -299,27 +320,34 @@ function Portfolio() {
             </div>
           </header>
 
-          <section className="grid12 avoid-break mt-12">
+          <section className="mt-6">
+            <div
+              className="colophon flex flex-wrap items-center gap-x-3 gap-y-1"
+              style={{ fontStyle: "normal" }}
+            >
+              <a href="tel:+66959583990" className="tel-link">
+                <TelIcon />
+                <span>+66 95 958 3990</span>
+              </a>
+              <a href="mailto:chun.chayut@gmail.com" className="mail-link">
+                <MailIcon />
+                <span>chun.chayut@gmail.com</span>
+              </a>
+              <a href="https://chayut.me" className="web-link">
+                <WebIcon />
+                <span>chayut.me</span>
+              </a>
+              <a href="https://github.com/chaychun" className="gh-link">
+                <GhIcon />
+                <span>github.com/chaychun</span>
+              </a>
+            </div>
+          </section>
+
+          <section className="grid12 avoid-break mt-6">
             <div className="col-span-3"></div>
             <div className="col-span-9">
-              <div
-                className="colophon flex flex-wrap items-center gap-5"
-                style={{ fontStyle: "normal" }}
-              >
-                <a href="mailto:chun.chayut@gmail.com" className="mail-link">
-                  <MailIcon />
-                  <span>chun.chayut@gmail.com</span>
-                </a>
-                <a href="https://chayut.me" className="web-link">
-                  <WebIcon />
-                  <span>chayut.me</span>
-                </a>
-                <a href="https://github.com/chaychun" className="gh-link">
-                  <GhIcon />
-                  <span>github.com/chaychun</span>
-                </a>
-              </div>
-              <p className="lede mt-1">
+              <p className="lede">
                 <span className="lead">
                   Software engineer with focus on user experience and interaction designs.
                 </span>{" "}
