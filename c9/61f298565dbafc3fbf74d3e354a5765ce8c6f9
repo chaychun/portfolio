@@ -1,0 +1,21 @@
+apps/site/src/components/sections/about.tsx
+  s_0c349c091f68f3::t_8151c01d36342a 15-16,23
+  s_0c349c091f68f3::t_6cbb75faacc264 70-71,75-76
+  s_0c349c091f68f3::t_0f0b98064e7f01 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c961f298565dbafc3fbf74d3e354a5765ce8c6f9",
+  "prompts": {},
+  "sessions": {
+    "s_0c349c091f68f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5941175e-46c5-4f04-b53d-85e8e4745a68",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
