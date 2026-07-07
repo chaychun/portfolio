@@ -12,16 +12,16 @@ const REACH_OUT_LINKS = [
     href: "mailto:chun.chayut@gmail.com",
   },
   {
-    label: "Threads",
-    href: "https://www.threads.com/@chun.chayut",
+    label: "X",
+    href: "https://x.com/chayutc_",
   },
   {
     label: "GitHub",
     href: "https://github.com/chaychun",
   },
   {
-    label: "Resume",
-    href: "/resume",
+    label: "Contra",
+    href: "https://contra.com/chunchayut?utm_campaign=HireMeOnContra&utm_medium=2a14c090-a68c-4e2a-be3f-f6649d266c80",
   },
 ]
 
@@ -67,11 +67,13 @@ export function AboutSection() {
             </Lede>
             <Lede className="mb-4">
               I believe great software should enhance human cognition, not deplete it. My goal is to
-              build interfaces that are intuitive, efficient, and delightful.
+              build interfaces that are intuitive, efficient, and delightful, using motion and
+              interaction as means for improving communication and usability.
             </Lede>
             <Lede>
               You can see some of my work below. Every project here was designed and built end to
-              end — design, frontend, and backend where there is one.
+              end — design, frontend, and backend where there is one. If they feel like what you
+              need, let's talk.
             </Lede>
           </div>
         </div>
