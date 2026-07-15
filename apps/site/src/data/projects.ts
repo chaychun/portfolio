@@ -34,6 +34,23 @@ export const projects: Project[] = [
       { label: "View on GitHub", href: "https://github.com/chaychun/generated-wiki" },
     ],
   },
+  {
+    slug: "thai-bus-food-tour",
+    title: "Thai Bus Food Tour",
+    role: "Trilingual marketing site for a Bangkok food tour company.",
+    tags: ["Design", "Engineering"],
+    description:
+      "Designed and built the tour company's trilingual marketing site with a CMS-driven blog, embedded booking, and premium-feeling interactions to match the brand's identity. Astro, React, Tailwind.",
+    date: "2025-11",
+    media: [
+      { src: "1A6frzuBJ48F2aUz3oL6ap84Xu1JmhDhLTEIbIgFJKY", objectPosition: "center bottom" },
+      "bMTsWPC4iehymR88vBaerKiBgb2udpr6ibJ9jC4dyfQ",
+      "RFBmpVBj2kbcaBoNqFwqi9aX19a2gT00aGTZd3yHszcE",
+      "TFvrH77fTf400wD016r8SxtXQ3PHYJuvb9r01bfkPuoJ94",
+      "7C93XR9G7m025oV6Kgt7DuZ8uIul900qQwQ5EsVeGZLxw",
+    ],
+    ctas: [{ label: "Visit the site", href: "https://www.thaibusfoodtour.co.th" }],
+  },
   // TODO: re-enable Mula once visuals are ready.
   // {
   //   slug: "mula",

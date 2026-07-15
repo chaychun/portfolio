@@ -5,13 +5,23 @@ import { useEffect, useRef, useState } from "react"
 import { Placeholder } from "@/components/placeholder"
 import { Video } from "@/components/video"
 
-export type StorySlide = string
+export type StorySlide = string | { src: string; objectPosition?: string }
 
 type SlideKind = "image" | "video" | "placeholder"
 
+function slideSrc(slide: StorySlide | undefined): string | undefined {
+  if (!slide) return undefined
+  return typeof slide === "string" ? slide : slide.src
+}
+
+function slideObjectPosition(slide: StorySlide | undefined): string | undefined {
+  return typeof slide === "object" && slide ? slide.objectPosition : undefined
+}
+
 function detectKind(slide: StorySlide | undefined): SlideKind {
-  if (!slide) return "placeholder"
-  if (slide.includes("/") || slide.includes(".")) return "image"
+  const src = slideSrc(slide)
+  if (!src) return "placeholder"
+  if (src.includes("/") || src.includes(".")) return "image"
   return "video"
 }
 
@@ -74,9 +84,10 @@ export function StoryHero({ story, className }: StoryHeroProps) {
   useEffect(() => {
     if (typeof window === "undefined") return
     for (const s of slides) {
-      if (detectKind(s) === "image") {
+      const src = slideSrc(s)
+      if (src && detectKind(s) === "image") {
         const img = new window.Image()
-        img.src = s
+        img.src = src
       }
     }
   }, [slides])
@@ -135,6 +146,8 @@ function CrossfadeLayer({ slide, index, total, animate, onEntered }: CrossfadeLa
   }, [animate])
 
   const kind = detectKind(slide)
+  const src = slideSrc(slide)
+  const objectPosition = slideObjectPosition(slide)
 
   return (
     <div
@@ -148,13 +161,21 @@ function CrossfadeLayer({ slide, index, total, animate, onEntered }: CrossfadeLa
         if (opacity === 1) onEntered()
       }}
     >
-      {kind === "image" && slide ? (
-        <img src={slide} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      ) : kind === "video" && slide ? (
+      {kind === "image" && src ? (
+        <img
+          src={src}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          style={objectPosition ? { objectPosition } : undefined}
+        />
+      ) : kind === "video" && src ? (
         <Video
-          playbackId={slide}
+          playbackId={src}
           className="absolute inset-0 h-full w-full"
-          style={{ "--media-object-fit": "cover" }}
+          style={{
+            "--media-object-fit": "cover",
+            ...(objectPosition ? { "--media-object-position": objectPosition } : {}),
+          }}
         />
       ) : (
         <Placeholder label={`slide ${index + 1}/${total}`} />
