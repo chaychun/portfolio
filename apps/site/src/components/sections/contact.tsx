@@ -3,13 +3,7 @@ import { Section } from "@workspace/ui/components/section"
 
 import { GhostEgg } from "@/components/ghost-egg"
 import { Link } from "@/components/link"
-
-const FOOTER_LINKS = [
-  { label: "Email", href: "mailto:chun.chayut@gmail.com" },
-  { label: "Threads", href: "https://www.threads.com/@chun.chayut" },
-  { label: "GitHub", href: "https://github.com/chaychun" },
-  { label: "Resume", href: "/resume" },
-]
+import { SOCIAL_LINKS } from "@/data/social-links"
 
 export function ContactSection() {
   return (
@@ -19,7 +13,7 @@ export function ContactSection() {
           <span>© 2026 Chayut Chunsamphran</span>
           <span className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-x-4 sm:gap-y-2">
             <GhostEgg />
-            {FOOTER_LINKS.map((link) => (
+            {SOCIAL_LINKS.map((link) => (
               <Link key={link.label} href={link.href} variant="quiet">
                 {link.label}
               </Link>

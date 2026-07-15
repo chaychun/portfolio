@@ -14,9 +14,9 @@
     "agent-dev": "bun scripts/agent-dev.ts",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "format": "oxfmt",
-    "format:check": "oxfmt --check",
-    "check": "oxfmt --check && oxlint",
+    "format": "oxfmt \"**/*.{ts,tsx,js,jsx,mjs,cjs}\"",
+    "format:check": "oxfmt --check \"**/*.{ts,tsx,js,jsx,mjs,cjs}\"",
+    "check": "oxfmt --check \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" && oxlint",
     "typecheck": "turbo typecheck",
     "postinstall": "git config core.hooksPath .githooks 2>/dev/null || true"
   },

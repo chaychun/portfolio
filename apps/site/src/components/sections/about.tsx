@@ -5,37 +5,19 @@ import { Section } from "@workspace/ui/components/section"
 
 import { Link } from "@/components/link"
 import { WaveName } from "@/components/wave-name"
-
-const REACH_OUT_LINKS = [
-  {
-    label: "Email",
-    href: "mailto:chun.chayut@gmail.com",
-  },
-  {
-    label: "X",
-    href: "https://x.com/chayutc_",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/chaychun",
-  },
-  {
-    label: "Contra",
-    href: "https://contra.com/chunchayut?utm_campaign=HireMeOnContra&utm_medium=2a14c090-a68c-4e2a-be3f-f6649d266c80",
-  },
-]
+import { SOCIAL_LINKS } from "@/data/social-links"
 
 const META = [
   { label: "Based", value: "Bangkok, Thailand" },
   {
-    label: "Open to",
-    value: "Software & design engineering roles",
+    label: "Focus",
+    value: "Interaction & interface design",
   },
   {
     label: "Reach out",
     value: (
       <span className="flex flex-wrap items-center gap-4">
-        {REACH_OUT_LINKS.map((link) => (
+        {SOCIAL_LINKS.map((link) => (
           <Link key={link.label} href={link.href}>
             {link.label}
           </Link>
@@ -49,7 +31,7 @@ export function AboutSection() {
   return (
     <Section id="about" screenLabel="About" className="pt-24 pb-20 cols:pt-30">
       <Container>
-        <div className="grid gap-x-[var(--container-gutter)] gap-y-8 cols:grid-cols-2 cols:grid-rows-[auto_1fr] cols:items-end">
+        <div className="grid gap-x-(--container-gutter) gap-y-8 cols:grid-cols-2 cols:grid-rows-[auto_1fr] cols:items-end">
           <div
             aria-hidden
             className="order-1 size-5 rounded-full bg-brand cols:col-start-1 cols:row-start-1"
@@ -72,8 +54,7 @@ export function AboutSection() {
             </Lede>
             <Lede>
               You can see some of my work below. Every project here was designed and built end to
-              end — design, frontend, and backend where there is one. If they feel like what you
-              need, let's talk.
+              end — design, frontend, and backend where there is one.
             </Lede>
           </div>
         </div>

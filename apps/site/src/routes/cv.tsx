@@ -5,19 +5,19 @@ import { useState } from "react"
 
 const DEV_LABEL_ACTIVE = !!(import.meta.env.DEV && import.meta.env.VITE_DEV_LABEL)
 
-export const Route = createFileRoute("/resume")({
+export const Route = createFileRoute("/cv")({
   beforeLoad: () => {
     if (!import.meta.env.DEV) throw notFound()
   },
   head: () => ({
-    meta: DEV_LABEL_ACTIVE ? [] : [{ title: "Chayut Chunsamphran — Resume" }],
+    meta: DEV_LABEL_ACTIVE ? [] : [{ title: "Chayut Chunsamphran — CV" }],
   }),
-  component: Portfolio,
+  component: CV,
 })
 
 const css = `
-  .resume-root {
-    background: #fafaf9;
+  .cv-root {
+    background: #292524;
     color: #1c1917;
     font-family: "PP Neue Montreal", "Neue Montreal", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-feature-settings: "ss01", "cv11";
@@ -31,7 +31,7 @@ const css = `
     padding: 24px 0 48px;
   }
 
-  .resume-root .sheet {
+  .cv-root .sheet {
     width: 210mm;
     min-height: 297mm;
     background: #fff;
@@ -46,18 +46,18 @@ const css = `
     position: relative;
   }
 
-  .resume-root .display {
+  .cv-root .display {
     font-weight: 400;
-    font-size: 56pt;
+    font-size: 60pt;
     line-height: 0.92;
     letter-spacing: -0.035em;
     text-wrap: balance;
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
   }
-  .resume-root .display em { font-style: italic; font-weight: 400; }
+  .cv-root .display em { font-style: italic; font-weight: 400; }
 
-  .resume-root .colophon {
+  .cv-root .colophon {
     font-weight: 400;
     font-style: italic;
     font-size: 9pt;
@@ -65,40 +65,41 @@ const css = `
     color: #57534e;
   }
 
-  .resume-root .section-label {
+  .cv-root .section-label {
     font-weight: 500;
     font-size: 11pt;
-    line-height: 1;
+    line-height: 1.55;
     letter-spacing: -0.01em;
     color: #1c1917;
   }
 
-  .resume-root .body {
+  .cv-root .body {
     font-weight: 400;
     font-size: 10.5pt;
     line-height: 1.55;
     letter-spacing: -0.005em;
     color: #57534e;
   }
-  .resume-root .body em { font-style: italic; color: #44403c; }
+  .cv-root .body em { font-style: italic; color: #44403c; }
 
-  .resume-root .meta {
+  .cv-root .meta {
     font-weight: 400;
     font-size: 9pt;
+    line-height: 1.55;
     font-style: italic;
     letter-spacing: -0.005em;
     color: #a8a29e;
   }
 
-  .resume-root .role-line {
+  .cv-root .role-line {
     font-weight: 500;
     font-size: 11pt;
     letter-spacing: -0.005em;
     color: #1c1917;
   }
-  .resume-root .role-line em { font-weight: 400; font-style: italic; color: #78716c; }
+  .cv-root .role-line em { font-weight: 400; font-style: italic; color: #78716c; }
 
-  .resume-root .lede {
+  .cv-root .lede {
     font-weight: 400;
     font-size: 13pt;
     line-height: 1.45;
@@ -106,15 +107,15 @@ const css = `
     color: #78716c;
     text-wrap: pretty;
   }
-  .resume-root .lede .lead { color: #1c1917; }
+  .cv-root .lede .lead { color: #1c1917; }
 
-  .resume-root .photo-slot {
-    width: 34mm;
-    height: 44mm;
+  .cv-root .photo-slot {
+    width: 35mm;
+    height: 45mm;
     overflow: hidden;
   }
-  .resume-root.with-photo .photo-slot { background: #f5f5f4; }
-  .resume-root .photo-slot img {
+  .cv-root.with-photo .photo-slot { background: #f5f5f4; }
+  .cv-root .photo-slot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -123,54 +124,56 @@ const css = `
     transform-origin: center 45%;
     display: block;
     filter: grayscale(0.15) contrast(1.02);
+    /* iPhone JPEG carries an HDR gain map — clamp to SDR so it doesn't glow. */
+    dynamic-range-limit: standard;
   }
-  .resume-root:not(.with-photo) .photo-slot img { display: none; }
+  .cv-root:not(.with-photo) .photo-slot img { display: none; }
 
-  .resume-root ul.dots { list-style: none; padding: 0; margin: 0; }
-  .resume-root ul.dots li { padding-left: 1.05em; text-indent: -1.05em; }
-  .resume-root ul.dots li::before { content: "—\\00a0\\00a0"; }
+  .cv-root ul.dots { list-style: none; padding: 0; margin: 0; }
+  .cv-root ul.dots li { padding-left: 1.05em; text-indent: -1.05em; }
+  .cv-root ul.dots li::before { content: "—\\00a0\\00a0"; }
 
-  .resume-root a {
+  .cv-root a {
     color: inherit;
     text-decoration: none;
     transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .resume-root a:hover {
+  .cv-root a:hover {
     color: #f36208;
   }
-  .resume-root .inline-link,
-  .resume-root .inline-link em { color: #78716c; }
-  .resume-root .inline-link:hover,
-  .resume-root .inline-link:hover em { color: #f36208; }
-  .resume-root .mail-link,
-  .resume-root .web-link,
-  .resume-root .gh-link { color: #a8a29e; }
+  .cv-root .inline-link,
+  .cv-root .inline-link em { color: #78716c; }
+  .cv-root .inline-link:hover,
+  .cv-root .inline-link:hover em { color: #f36208; }
+  .cv-root .mail-link,
+  .cv-root .web-link,
+  .cv-root .gh-link { color: #a8a29e; }
 
-  .resume-root .gh-link,
-  .resume-root .web-link,
-  .resume-root .mail-link,
-  .resume-root .tel-link {
+  .cv-root .gh-link,
+  .cv-root .web-link,
+  .cv-root .mail-link,
+  .cv-root .tel-link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
   }
-  .resume-root .tel-link { color: #a8a29e; }
-  .resume-root .gh-icon,
-  .resume-root .web-icon,
-  .resume-root .mail-icon,
-  .resume-root .tel-icon {
+  .cv-root .tel-link { color: #a8a29e; }
+  .cv-root .gh-icon,
+  .cv-root .web-icon,
+  .cv-root .mail-icon,
+  .cv-root .tel-icon {
     width: 11px;
     height: 11px;
     display: block;
   }
 
-  .resume-root .grid12 {
+  .cv-root .grid12 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 8mm;
   }
 
-  .resume-root .controls {
+  .cv-root .controls {
     width: 210mm;
     max-width: calc(100% - 32px);
     margin: 0 auto;
@@ -179,7 +182,7 @@ const css = `
     justify-content: flex-end;
     align-items: center;
   }
-  .resume-root .controls .photo-label {
+  .cv-root .controls .photo-label {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -189,20 +192,24 @@ const css = `
     cursor: pointer;
   }
 
-  @page { size: A4; margin: 16mm 14mm 14mm 14mm; }
+  /* Vertical margins come from @page (they repeat on every printed page).
+     Horizontal margins come from .sheet padding instead of @page: Safari drops
+     the right @page margin, bleeding content to the edge. Block padding is
+     honored on every page fragment, so left/right stay symmetric. */
+  @page { size: A4; margin: 16mm 0 14mm 0; }
   @media print {
-    .resume-root { background: #fff; padding: 0; }
-    .resume-root .sheet { border: 0; }
-    .resume-root .controls,
-    .resume-root .no-print { display: none !important; }
-    .resume-root .sheet {
+    .cv-root { background: #fff; padding: 0; }
+    .cv-root .controls,
+    .cv-root .no-print { display: none !important; }
+    .cv-root .sheet {
       margin: 0;
+      border: 0;
       box-shadow: none;
       width: auto;
       min-height: 0;
-      padding: 0;
+      padding: 0 14mm;
     }
-    .resume-root .avoid-break {
+    .cv-root .avoid-break {
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -282,7 +289,7 @@ function MailIcon() {
   )
 }
 
-function Portfolio() {
+function CV() {
   const [withPhoto, setWithPhoto] = useState(true)
 
   function print() {
@@ -292,7 +299,7 @@ function Portfolio() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <div className={`resume-root${withPhoto ? " with-photo" : ""}`}>
+      <div className={`cv-root${withPhoto ? " with-photo" : ""}`}>
         <div className="controls no-print">
           <label className="photo-label">
             <Switch size="sm" checked={withPhoto} onCheckedChange={(v) => setWithPhoto(v)} />
@@ -309,23 +316,24 @@ function Portfolio() {
 
         <main className="sheet">
           <header className="grid12 items-end">
+            <div className="col-span-3">
+              <div className="photo-slot">
+                <img src="/resume/IMG_6810.jpeg" alt="Chayut Chunsamphran" />
+              </div>
+            </div>
             <div className="col-span-9">
-              <h1 className="display">
+              <h1 className="display" style={{ marginLeft: "-0.4rem" }}>
                 Chayut
                 <br />
                 Chunsamphran
               </h1>
             </div>
-            <div className="col-span-3 flex justify-end">
-              <div className="photo-slot">
-                <img src="/resume/IMG_6810.jpeg" alt="Chayut Chunsamphran" />
-              </div>
-            </div>
           </header>
 
-          <section className="mt-6">
+          <section className="grid12 mt-6">
+            <div className="col-span-3"></div>
             <div
-              className="colophon flex flex-wrap items-center gap-x-3 gap-y-1"
+              className="colophon col-span-9 flex flex-wrap items-center gap-x-3 gap-y-1"
               style={{ fontStyle: "normal" }}
             >
               <a href="tel:+66959583990" className="tel-link">
@@ -351,24 +359,87 @@ function Portfolio() {
             <div className="col-span-3"></div>
             <div className="col-span-9">
               <p className="lede">
-                <span className="lead">
-                  Software engineer with focus on user experience and interaction designs.
-                </span>{" "}
-                Works in TypeScript and React. Experience with AI-assisted development workflows
-                since early 2025: design exploration, coding agents, AI-powered products. Based in
-                Bangkok, open to remote.
+                <span className="lead">Interaction-focused designer and developer.</span> Designs
+                and builds digital interfaces end-to-end. Using motion, interaction, and interface
+                craft as tools for clearer, more intuitive software. Based in Bangkok.
               </p>
             </div>
           </section>
 
-          <section className="grid12 mt-14 items-baseline">
+          <section className="grid12 avoid-break mt-14 items-baseline">
+            <div className="col-span-3">
+              <div className="meta" aria-hidden="true">
+                &nbsp;
+              </div>
+              <div className="section-label mt-1">Education</div>
+            </div>
+            <div className="body col-span-9">
+              <div className="meta">2025.</div>
+              <div className="role-line mt-1">
+                BSc Physics, <em>First Class Honours, Mahidol University International College.</em>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid12 mt-12 items-baseline">
+            <div className="col-span-3">
+              <div className="meta" aria-hidden="true">
+                &nbsp;
+              </div>
+              <div className="section-label mt-1">Experience</div>
+            </div>
+            <div className="body col-span-9 space-y-5">
+              <div className="avoid-break">
+                <div className="meta">2025-present</div>
+                <div className="role-line mt-1">Independent Designer &amp; Developer</div>
+                <div className="mt-1">
+                  Client and self-directed software products across web and desktop, focusing on
+                  motion and interaction.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid12 mt-12 items-baseline">
             <div className="col-span-3">
               <div className="section-label">Selected work</div>
             </div>
             <div className="body col-span-9 space-y-5">
               <div className="avoid-break">
                 <div className="flex flex-wrap items-baseline gap-4">
-                  <span className="role-line">Generated Wiki</span>
+                  <span className="role-line">Thai Bus Food Tour</span>
+                  <span className="meta flex items-center gap-4">
+                    <a href="https://www.thaibusfoodtour.co.th" className="web-link">
+                      <WebIcon />
+                      <span>thaibusfoodtour.co.th</span>
+                    </a>
+                  </span>
+                </div>
+                <div className="mt-1">
+                  Designed and built the tour company's trilingual marketing site with a CMS-driven
+                  blog, embedded booking, and premium-feeling interactions to match the brand's
+                  identity. Astro, React, Tailwind.
+                </div>
+              </div>
+              <div className="avoid-break">
+                <div className="flex flex-wrap items-baseline gap-4">
+                  <span className="role-line">Interaction &amp; Motion Experiments</span>
+                  <span className="meta flex items-center gap-4">
+                    <a href="https://chayut.me" className="web-link">
+                      <WebIcon />
+                      <span>chayut.me</span>
+                    </a>
+                  </span>
+                </div>
+                <div className="mt-1">
+                  An ongoing collection of micro-UX and motion studies exploring interface
+                  paradigms: gesture-driven animation, adaptive navigation, playful UI, and more.
+                </div>
+              </div>
+
+              <div className="avoid-break">
+                <div className="flex flex-wrap items-baseline gap-4">
+                  <span className="role-line">Generated.Wiki</span>
                   <span className="meta flex items-center gap-4">
                     <a href="https://github.com/chaychun/generated-wiki" className="gh-link">
                       <GhIcon />
@@ -381,8 +452,9 @@ function Portfolio() {
                   </span>
                 </div>
                 <div className="mt-1">
-                  Wikipedia, but generated by LLMs. Explanation adapts to the reader's persona and
-                  reading level. Streaming generation, content caching, persona controls.
+                  An encyclopedia that writes itself: every article is generated on demand and
+                  rewrites itself per reader, surfacing different depth and detail by reading level
+                  or persona.
                 </div>
               </div>
 
@@ -397,46 +469,63 @@ function Portfolio() {
                   </span>
                 </div>
                 <div className="mt-1">
-                  AI-powered desktop app for learning to code. Agent generates exercises, reviews
-                  submissions, and adapts the next lesson to the learner's progress. Built to
-                  replace passive tutorial-watching with active, tailored practice.
+                  AI coding tutor whose agent reviews each submission and writes the next lesson
+                  around exactly where the learner struggled. Packaged as a native desktop app that
+                  runs entirely on-device.
                 </div>
               </div>
 
               <div className="avoid-break">
                 <div className="flex flex-wrap items-baseline gap-4">
-                  <span className="role-line">Personal Website</span>
+                  <span className="role-line">InternShips</span>
                   <span className="meta flex items-center gap-4">
-                    <a href="https://github.com/chaychun/portfolio" className="gh-link">
+                    <a href="https://github.com/chaychun/rotten-apple" className="gh-link">
                       <GhIcon />
-                      <span>chaychun/portfolio</span>
+                      <span>chaychun/rotten-apple</span>
                     </a>
-                    <a href="https://chayut.me" className="web-link">
+                    <a href="https://rukoilla.itch.io/intern-ships" className="web-link">
                       <WebIcon />
-                      <span>chayut.me</span>
+                      <span>rukoilla.itch.io/intern-ships</span>
                     </a>
                   </span>
                 </div>
                 <div className="mt-1">
-                  Showcase of more works beyond this resume, alongside a personal collection of web
-                  interaction, motion, and micro-UX experiments. Live at{" "}
-                  <a href="https://chayut.me" className="inline-link">
-                    <em>chayut.me</em>
-                  </a>
-                  .
+                  A cozy 3D creature-catching game for Comfy Jam Summer 2026, built with two
+                  collaborators. Designed and built core systems end to end: quests, logbook,
+                  spawning and zones, and a day/time cycle. Built in Godot.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid12 mt-12 items-baseline">
+            <div className="col-span-3">
+              <div className="section-label">Research</div>
+            </div>
+            <div className="body col-span-9 space-y-5">
+              <div className="avoid-break">
+                <div>
+                  <span className="role-line">
+                    Unsupervised PINN for solving Schrödinger Equation in 1D Potential Wells
+                  </span>
+                </div>
+                <div className="mt-1">
+                  Unsupervised neural network that finds a quantum system's ground state with no
+                  training data, using a physics-informed loss derived from the Schrödinger
+                  equation. Ground-state energy accurate within 0.5% of exact.
                 </div>
               </div>
 
               <div className="avoid-break">
                 <div>
-                  <span className="role-line">Neural Network Quantum State Solver</span>
-                  <span className="meta"> supervised by Dr. Piti Ongmongkolkul</span>
+                  <span className="role-line">
+                    Mechanism of Restrained Horizontal Surface Frosting with Acoustic Wave
+                  </span>
                 </div>
                 <div className="mt-1">
-                  Unsupervised neural network that finds the ground state of an arbitrary potential
-                  well using a physics-informed loss. No training data required; loss extends
-                  naturally to richer initial conditions such as external fields. Ground state
-                  energy prediction accurate within 0.5%.
+                  Application of sound wave for restraining frost formation on horizontal surfaces.
+                  Presented at the International Conference of Young Scientists and national science
+                  fairs.
                 </div>
               </div>
             </div>
@@ -444,56 +533,50 @@ function Portfolio() {
 
           <section className="grid12 avoid-break mt-12 items-baseline">
             <div className="col-span-3">
-              <div className="section-label">Education</div>
-            </div>
-            <div className="body col-span-9">
-              <div className="meta">2025.</div>
-              <div className="role-line mt-1">
-                BSc Physics, <em>First Class Honours, Mahidol University.</em>
+              <div className="meta" aria-hidden="true">
+                &nbsp;
               </div>
-            </div>
-          </section>
-
-          <section className="grid12 avoid-break mt-12 items-baseline">
-            <div className="col-span-3">
-              <div className="section-label">Certifications</div>
-            </div>
-            <div className="body col-span-9">
-              <div className="meta">2025.</div>
-              <div className="role-line mt-1">
-                Animations on the Web, <em>by Emil Kowalski.</em>
-              </div>
-            </div>
-          </section>
-
-          <section className="grid12 avoid-break mt-12 items-baseline">
-            <div className="col-span-3">
               <div className="section-label">Skills</div>
             </div>
             <div className="body col-span-9">
               <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                 <div>
-                  <div className="meta">Languages</div>
-                  <div>TypeScript, JavaScript, HTML, CSS, Swift, Python.</div>
+                  <div className="meta">Design</div>
+                  <div>Interaction &amp; motion design, prototyping, interface systems, Figma.</div>
                 </div>
                 <div>
-                  <div className="meta">Web</div>
-                  <div>React, Next.js, Tanstack, Astro, Tailwind CSS, shadcn/ui.</div>
+                  <div className="meta">Engineering</div>
+                  <div>
+                    TypeScript, React, Next.js, TanStack, Tailwind CSS; Tauri, Electrobun; Godot,
+                    Python.
+                  </div>
                 </div>
                 <div>
-                  <div className="meta">Desktop & mobile</div>
-                  <div>Tauri, Electrobun, React Native, SwiftUI.</div>
-                </div>
-                <div>
-                  <div className="meta">Tooling</div>
-                  <div>Git, Figma, Claude Code,</div>
+                  <div className="meta">AI &amp; agents</div>
+                  <div>Claude Agent SDK, MCP, LLM tool use, Claude Code.</div>
                 </div>
                 <div>
                   <div className="meta">Spoken</div>
                   <div>
-                    Thai <em>native</em>, English <em>fluent</em>.
+                    Thai — <em>native</em>
+                    <br /> English — <em>fluent</em>.
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid12 avoid-break mt-12 items-baseline">
+            <div className="col-span-3">
+              <div className="meta" aria-hidden="true">
+                &nbsp;
+              </div>
+              <div className="section-label mt-1">Certifications</div>
+            </div>
+            <div className="body col-span-9">
+              <div className="meta">2025.</div>
+              <div className="role-line mt-1">
+                Animations on the Web, <em>by Emil Kowalski.</em>
               </div>
             </div>
           </section>
