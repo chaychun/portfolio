@@ -1,0 +1,75 @@
+apps/site/src/routes/cv.tsx
+  s_32e52f8b44c059::t_ec5a313af83554 20
+  s_32e52f8b44c059::t_6889e0e5bf9b76 319-323
+  s_32e52f8b44c059::t_30397328c2a171 1-19,21-50,53-70,72-87,89-112,115-121,125-126,129-194,200-205,207-209,211-318,324,326-331,356,366-370,375-385,390-392,395,398-399,401-410,417-418,422-434,437-454,458-497,500,506-507,511-515,529-535,540-560,563-570,575-587
+  s_d6fc13e57d4dc0::t_de9ed23d9043b7 362-364,371-373,386-388,396-397,419-421,435-436,455-457,508-510,526-528,536-538,561-562,571-573
+  s_32e52f8b44c059::t_b83887b5e8dfd9 498-499,501-505,516-521,523-525
+  s_32e52f8b44c059::t_a4122664151878 522
+  s_32e52f8b44c059::t_08415b67d4e4ee 574
+  s_32e52f8b44c059::t_5c9d4607ca1129 51
+  s_32e52f8b44c059::t_fccde12d410026 332,358-361
+  s_32e52f8b44c059::t_0092a8f8b083b2 127-128
+  s_32e52f8b44c059::t_b8d30c30fb9997 335,337-354
+  s_32e52f8b44c059::t_05727fe4555208 195-199,206,210
+  s_32e52f8b44c059::t_bfbeb5ab71a4f8 88
+  s_32e52f8b44c059::t_ea3b3ac908831f 113
+  s_32e52f8b44c059::t_1674c156ab094f 122-124
+  s_32e52f8b44c059::t_3482e42210e658 333-334,336
+  s_32e52f8b44c059::t_5d366ea122f896 389
+  s_32e52f8b44c059::t_0be68b0523914a 539
+  s_32e52f8b44c059::t_0c3f5e738abcf0 71
+  s_32e52f8b44c059::t_db363ce95a488c 374
+  s_32e52f8b44c059::t_5bbac2a3c04f0b 411-416
+  s_d6fc13e57d4dc0::t_609d869c713d45 52,114,325,355,357,365,393-394,400
+apps/site/src/data/social-links.ts
+  s_53451b904f0229::t_2a5b358d06ebfd 10-13
+  s_53451b904f0229::t_91277b477cb1b8 1-9,14
+apps/site/src/routes/resume.tsx
+  s_32e52f8b44c059::t_838d72b95d2867 1,9-11
+apps/site/src/components/sections/about.tsx
+  s_53451b904f0229::t_852938a35d1b17 8
+  s_32e52f8b44c059::t_fcfa5db3d19a60 13-14
+  s_32e52f8b44c059::t_fb1899236aad10 57
+  s_53451b904f0229::t_bebae0c38dac82 20
+apps/site/src/components/sections/contact.tsx
+  s_53451b904f0229::t_dec887d4504eb4 6
+  s_53451b904f0229::t_6ce1122ff84c50 16
+apps/site/vite.config.ts
+  s_32e52f8b44c059::t_def116281ade66 27
+package.json
+  s_d6fc13e57d4dc0::t_a5b06473573592 17-19
+apps/site/src/routeTree.gen.ts
+  s_32e52f8b44c059::t_c325b54bfb5553 13,21-25,34,39,45,50,52-53,58,71-77,90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d0b89d58613553a619b9fd10cd70350c1662e305",
+  "prompts": {},
+  "sessions": {
+    "s_32e52f8b44c059": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46a9e968-4e73-486a-8bb8-a0a44115c065",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    },
+    "s_53451b904f0229": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a9f7a9d-138a-42fe-9cf0-e9e8d917d551",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    },
+    "s_d6fc13e57d4dc0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42ffa4d4-0039-4655-b6da-6f6827400335",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
