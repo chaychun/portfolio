@@ -1,0 +1,24 @@
+apps/site/src/components/work-story.tsx
+  s_9920b0ba0109db::t_6ae10ee124079d 149-150,164-171,173,175-178
+  s_9920b0ba0109db::t_f1ee3d2d4ff03b 87-88,90
+  s_9920b0ba0109db::t_bf24e3ce005b19 8,12-20,22-24
+apps/site/src/data/projects.ts
+  s_9920b0ba0109db::t_228f2eb1b24bbf 46
+  s_9920b0ba0109db::t_fb24bb46208c4f 37-45,47-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b5caaeed11d20b600a1bdebc692c7c54c5d425a6",
+  "prompts": {},
+  "sessions": {
+    "s_9920b0ba0109db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fce8fdb-804a-44e1-aefc-024e5eec4bf3",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
