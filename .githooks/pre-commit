@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
-bun run check
+
+files=$(git diff --cached --name-only --diff-filter=ACMR -- \
+  '*.ts' '*.tsx' '*.js' '*.jsx' '*.mjs' '*.cjs')
+
+if [ -n "$files" ]; then
+  echo "$files" | xargs bun x oxfmt
+  echo "$files" | xargs git add --
+fi
+
+bun run lint
