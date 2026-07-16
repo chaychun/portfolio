@@ -1,0 +1,89 @@
+.prettierrc
+  s_cf318e13e9b973::t_3c365c40112d00 9
+src/components/work-story.tsx
+  s_cf318e13e9b973::t_afa0bc51d8b55c 6
+CLAUDE.md
+  s_cf318e13e9b973::t_9a376bd9fc7fc2 3-5,7-8,10,12,14-15,17-28
+src/components/ui/meta-list.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-25
+src/routes/__root.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 2-15,17-65
+  s_cf318e13e9b973::t_06c2a42cc85da8 16
+  s_cf318e13e9b973::t_6a2780afb6cad5 1
+src/components/sections/work.tsx
+  s_cf318e13e9b973::t_afa0bc51d8b55c 4
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-3,5-56
+src/components/interaction-card.tsx
+  s_cf318e13e9b973::t_eac04625fc577c 3-18
+  s_cf318e13e9b973::t_824664b23337dd 44-53
+src/interactions/registry.ts
+  s_cf318e13e9b973::t_dfb910f375ea8c 1-25
+src/components/sections/contact.tsx
+  s_cf318e13e9b973::t_afa0bc51d8b55c 3-4
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-2,5-25
+.oxfmtrc.json
+  s_cf318e13e9b973::t_ac3afbe4b16162 17
+src/components/sections/about.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 2-63
+  s_cf318e13e9b973::t_afa0bc51d8b55c 1
+src/routeTree.gen.ts
+  s_cf318e13e9b973::t_77c7605e0badb5 1-123
+src/components/placeholder.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-24
+src/components/ui/container.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-24
+.gitignore
+  s_cf318e13e9b973::t_b484c662b2f08b 36-37
+package.json
+  s_cf318e13e9b973::t_a6b7289aff8fad 5,7-10,18-35,38-41,45-48
+tsconfig.json
+  s_cf318e13e9b973::t_fa0309b5089be3 3
+  s_cf318e13e9b973::t_37457cd75b86f4 2,6,8-11,13-17,19-28
+src/components/ui/button.tsx
+  s_cf318e13e9b973::t_afa0bc51d8b55c 3-4
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-2,5-56
+src/components/ui/section.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-17
+src/components/ui/switch.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1,3-30
+  s_cf318e13e9b973::t_afa0bc51d8b55c 2
+src/routes/resume.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 4-5
+  s_cf318e13e9b973::t_8997eada246b20 12
+src/components/link.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1,3,5-9,11-13,16-25
+src/data/interactions.ts
+  s_cf318e13e9b973::t_9e2cca75095998 6,23-84
+  s_cf318e13e9b973::t_c17661415c0a09 16
+src/routes/interactions.$slug.tsx
+  s_cf318e13e9b973::t_ee51cfbc743e4f 1-39
+components.json
+  s_cf318e13e9b973::t_525b32bd335a10 17-18
+  s_cf318e13e9b973::t_92f7ba90fc875e 8
+src/routes/cv.tsx
+  s_cf318e13e9b973::t_afa0bc51d8b55c 2-3
+  s_cf318e13e9b973::t_c152a84d1b98f2 1,4-11,13-586
+  s_cf318e13e9b973::t_9998b061c5b5b6 12
+src/components/ui/lede.tsx
+  s_cf318e13e9b973::t_c152a84d1b98f2 1-13
+scripts/build-og.ts
+  s_cf318e13e9b973::t_d7b5e060d789ba 7
+bun.lock
+  s_cf318e13e9b973::t_69b6fb75cb3615 8,14-15,21,26,31-33,37,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,150,152,154,156,158,160,162,164,166,168,170,182,184,186,188,190,216,244,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,504,632,698,708,794,816,968,976,978,998,1080,1102,1154,1258,1306-1307,1318-1319,1322-1323,1340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2362e631b0703006e22a723e33c90ba2cb6f15ca",
+  "prompts": {},
+  "sessions": {
+    "s_cf318e13e9b973": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1757269-4151-44a5-936d-6882c5e94c49",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
