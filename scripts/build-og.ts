@@ -4,8 +4,7 @@ import { dirname, join } from "node:path"
 import { Resvg } from "@resvg/resvg-js"
 
 const root = join(import.meta.dir, "..")
-const siteDir = join(root, "apps/site")
-const publicDir = join(siteDir, "public")
+const publicDir = join(root, "public")
 const fontPath = join(publicDir, "fonts/PPNeueMontreal-Regular.otf")
 const fontBuffer = readFileSync(fontPath)
 
