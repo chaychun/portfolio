@@ -1,0 +1,20 @@
+.githooks/pre-commit
+  s_cf318e13e9b973::t_0861bd30f13713 4-8,10-12
+  s_cf318e13e9b973::t_c017a173b36a88 9,13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "527c7a560125cd5c882009d9675c6ad88984d675",
+  "prompts": {},
+  "sessions": {
+    "s_cf318e13e9b973": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1757269-4151-44a5-936d-6882c5e94c49",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
