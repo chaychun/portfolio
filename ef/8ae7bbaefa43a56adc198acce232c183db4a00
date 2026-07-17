@@ -1,0 +1,21 @@
+src/routeTree.gen.ts
+  s_3dc7507aa36ac6::t_823afcd16bba72 50,52-53
+src/components/interaction-card.tsx
+  s_3dc7507aa36ac6::t_98736eca53725c 13-14,40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "ef8ae7bbaefa43a56adc198acce232c183db4a00",
+  "prompts": {},
+  "sessions": {
+    "s_3dc7507aa36ac6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cc1399b4-bef7-4dec-af7d-89f69d7a612b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
