@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as InteractionsSlugRouteImport } from './routes/interactions.$slug'
 
 const ResumeRoute = ResumeRouteImport.update({
   id: '/resume',
@@ -29,44 +28,35 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InteractionsSlugRoute = InteractionsSlugRouteImport.update({
-  id: '/interactions/$slug',
-  path: '/interactions/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
   '/resume': typeof ResumeRoute
-  '/interactions/$slug': typeof InteractionsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
   '/resume': typeof ResumeRoute
-  '/interactions/$slug': typeof InteractionsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
   '/resume': typeof ResumeRoute
-  '/interactions/$slug': typeof InteractionsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cv' | '/resume' | '/interactions/$slug'
+  fullPaths: '/' | '/cv' | '/resume'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv' | '/resume' | '/interactions/$slug'
-  id: '__root__' | '/' | '/cv' | '/resume' | '/interactions/$slug'
+  to: '/' | '/cv' | '/resume'
+  id: '__root__' | '/' | '/cv' | '/resume'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CvRoute: typeof CvRoute
   ResumeRoute: typeof ResumeRoute
-  InteractionsSlugRoute: typeof InteractionsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,13 +82,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/interactions/$slug': {
-      id: '/interactions/$slug'
-      path: '/interactions/$slug'
-      fullPath: '/interactions/$slug'
-      preLoaderRoute: typeof InteractionsSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -106,7 +89,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CvRoute: CvRoute,
   ResumeRoute: ResumeRoute,
-  InteractionsSlugRoute: InteractionsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

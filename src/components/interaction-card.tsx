@@ -1,10 +1,7 @@
 import type { Interaction } from "@/data/interactions"
 
-import { Link } from "@tanstack/react-router"
-
 import { MarkdownText } from "@/components/markdown-text"
 import { Video } from "@/components/video"
-import { hasDemo } from "@/interactions/registry"
 
 type InteractionCardProps = {
   interaction: Interaction
@@ -12,10 +9,9 @@ type InteractionCardProps = {
 
 export function InteractionCard({ interaction }: InteractionCardProps) {
   const hasVideo = interaction.playbackId !== ""
-  const linkable = interaction.demo && hasDemo(interaction.slug)
 
-  const inner = (
-    <>
+  return (
+    <div className="grid gap-5">
       <div className="relative aspect-[4/3] overflow-hidden">
         {hasVideo ? (
           <Video
@@ -41,14 +37,6 @@ export function InteractionCard({ interaction }: InteractionCardProps) {
           <MarkdownText>{interaction.description}</MarkdownText>
         </span>
       </div>
-    </>
-  )
-
-  return linkable ? (
-    <Link to="/interactions/$slug" params={{ slug: interaction.slug }} className="grid gap-5">
-      {inner}
-    </Link>
-  ) : (
-    <div className="grid gap-5">{inner}</div>
+    </div>
   )
 }
