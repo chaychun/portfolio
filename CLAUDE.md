@@ -1,17 +1,28 @@
 # portfolio
 
-Monorepo. Apps under `apps/*`, shared packages under `packages/*`. Bun + Turbo + oxc toolchain.
+Single app at the repo root — personal site + resume. TanStack Start + Router
+(file-based routes) + Nitro, Vite, Tailwind v4, shadcn/ui. Bun + oxc toolchain
+(oxlint, oxfmt). Bun-only (npm/npx blocked by a hook).
 
-## Working in worktrees with agents
+Prerender enabled (`failOnError: true`) — SSR-incompatible code at module scope
+breaks the build.
 
-When you finish a task in a worktree and want the user to verify in a browser, start the dev server via:
+## Mux Player
 
-```sh
-bun run agent-dev "<short-label>" [site|playground]
-```
+Pkg: `@mux/mux-player-react`. Two import paths, both SSR-safe:
 
-- `<short-label>`: a short identifier describing what was done (e.g. `mux-poster-fix`, `dark-mode-strip`). The agent generates this — keep it concise, kebab-case, no spaces.
-- App arg is optional; defaults to `site`. Pass `playground` for the playground app.
-- Vite picks a free port automatically (`strictPort: false`), so parallel worktrees don't collide.
+- `@mux/mux-player-react` — eager
+- `@mux/mux-player-react/lazy` — viewport-deferred (default `loading="viewport"`). Prefer for below-fold or any non-LCP video to avoid shipping `hls.js` (~1.1MB) and `media-chrome` (~450KB) on initial load.
 
-The wrapper sets `VITE_DEV_LABEL`, which is read by a dev-only `<DevTitle>` in each app's `__root.tsx`. The browser tab title becomes `<label> — <pathname>` so you can tell parallel dev windows apart without remembering ports.
+**All videos must use `@/components/video` (`Video` component), not raw `MuxPlayer`.**
+
+Caller controls **sizing only** via wrapper element (e.g. `<div className="aspect-video w-full">`). Player fills container. Don't override `autoPlay`/`muted`/`loop`/controls/tracking — types omit them. If a future feature needs controls/audio/analytics, add it as separate component, don't loosen `Video`.
+
+No env key is needed for anything. Video playback only need playback token per manually uploaded asset.
+
+### Notes for non-standard video config:
+
+- Override default cover with `poster="img url here"` or `thumbnailTime` to choose frame from video itself.
+- Always use `autoPlay` prop with `"muted"` as value.
+- `ref` exposes `MuxPlayerElement` (HTMLMediaElement superset).
+- Events: `on<Event>` (e.g. `onLoadedMetadata`, `onPlay`, `onError`).

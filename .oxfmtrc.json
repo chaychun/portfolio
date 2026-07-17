@@ -14,7 +14,7 @@
     "newlinesBetween": true
   },
   "sortTailwindcss": {
-    "stylesheet": "./packages/ui/src/styles/globals.css",
+    "stylesheet": "./src/styles/globals.css",
     "functions": ["clsx", "cn", "cva", "tw", "twMerge"]
   }
 }

@@ -33,5 +33,5 @@ npm-debug.log*
 .DS_Store
 *.pem
 
-# Claude worktrees
-.claude/worktrees/
+# house-rules docs (local only for now)
+.house-rules/
