@@ -46,14 +46,6 @@ export const interactions: Interaction[] = [
     demo: false,
   },
   {
-    slug: "testimonial-stack",
-    title: "Testimonial stack",
-    description:
-      "Stack of review cards with gesture interaction. Built for [Thai Bus Food Tour](https://www.thaibusfoodtour.co.th/)",
-    playbackId: "N00UbEvTw7JeMrOs9plJSE6v5bXqcOQA00Z6VDVR01G9Cg",
-    demo: false,
-  },
-  {
     slug: "variable-font-selector",
     title: "Variable font selector",
     description:
@@ -73,6 +65,13 @@ export const interactions: Interaction[] = [
     title: "Onboarding name input",
     description: "Stateful input with a playful success state.",
     playbackId: "ew583FWJDTpSEnHQuHN100LM5o2u6cD2CN00eneTU22Yo",
+    demo: false,
+  },
+  {
+    slug: "info-panel",
+    title: "Info panel",
+    description: "An expandable information card with spring-animations.",
+    playbackId: "LfUT9mSBFFALERGpcBfn7ifFRfZlu1AadkpBXctXzNo",
     demo: false,
   },
   {
