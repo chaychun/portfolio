@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "dev:lab": "vite --config vite.lab.config.ts",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p lab/tsconfig.json",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt \"**/*.{ts,tsx,js,jsx,mjs,cjs}\"",
