@@ -1,0 +1,31 @@
+---
+import Link from "@/components/Link.astro"
+
+interface Props {
+  text: string
+}
+
+const { text } = Astro.props
+const parts: Array<{ kind: "text"; value: string } | { kind: "link"; label: string; href: string }> = []
+const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g
+let lastIndex = 0
+let match: RegExpExecArray | null
+
+while ((match = linkPattern.exec(text)) !== null) {
+  if (match.index > lastIndex) {
+    parts.push({ kind: "text", value: text.slice(lastIndex, match.index) })
+  }
+  parts.push({ kind: "link", label: match[1]!, href: match[2]! })
+  lastIndex = match.index + match[0].length
+}
+
+if (lastIndex < text.length) {
+  parts.push({ kind: "text", value: text.slice(lastIndex) })
+}
+---
+
+{
+  parts.map((part) =>
+    part.kind === "link" ? <Link href={part.href}>{part.label}</Link> : part.value,
+  )
+}

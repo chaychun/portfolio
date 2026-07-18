@@ -1,0 +1,63 @@
+---
+interface Props {
+  storyId: string
+  total: number
+}
+
+const { storyId, total } = Astro.props
+---
+
+<div
+  data-story-controls={storyId}
+  class="mb-[18px] flex gap-1.5"
+  style="--bar-i: 0"
+>
+  {
+    Array.from({ length: total }, (_, index) => (
+      <button
+        type="button"
+        aria-label={`Go to slide ${index + 1}`}
+        aria-current={index === 0 ? "true" : undefined}
+        data-story-go={index}
+        class="relative h-[3px] flex-1 cursor-pointer before:absolute before:inset-x-0 before:-top-3 before:-bottom-3 before:content-['']"
+      >
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 overflow-hidden rounded-full bg-stone-300"
+        >
+          <span
+            class="absolute inset-0 bg-brand transition-transform duration-300 ease-out"
+            style={`transform: translateX(calc((var(--bar-i) - ${index}) * (100% + 6px)))`}
+          />
+        </span>
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  const controls = document.querySelectorAll<HTMLElement>("[data-story-controls]:not([data-ready])")
+
+  for (const control of controls) {
+    control.dataset.ready = ""
+    const storyId = control.dataset.storyControls
+    const story = document.querySelector<HTMLElement>(`[data-story="${CSS.escape(storyId ?? "")}"]`)
+    if (!story) continue
+
+    story.addEventListener("story-change", (event) => {
+      const active = (event as CustomEvent<number>).detail
+      control.style.setProperty("--bar-i", String(active))
+      for (const button of control.querySelectorAll<HTMLButtonElement>("[data-story-go]")) {
+        const current = Number(button.dataset.storyGo) === active
+        if (current) button.setAttribute("aria-current", "true")
+        else button.removeAttribute("aria-current")
+      }
+    })
+
+    for (const button of control.querySelectorAll<HTMLButtonElement>("[data-story-go]")) {
+      button.addEventListener("click", () => {
+        story.dispatchEvent(new CustomEvent("story-go", { detail: Number(button.dataset.storyGo) }))
+      })
+    }
+  }
+</script>

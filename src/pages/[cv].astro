@@ -1,0 +1,276 @@
+---
+import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
+
+import photo from "@/assets/IMG_6810.jpeg"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import "@/styles/cv.css"
+
+export function getStaticPaths() {
+  return import.meta.env.DEV ? [{ params: { cv: "cv" } }] : []
+}
+
+const iconClass = "contact-icon"
+---
+
+<BaseLayout title="Chayut Chunsamphran — CV">
+  <div class="cv-root with-photo" data-cv>
+    <div class="controls no-print">
+      <label class="photo-label">
+        <input class="photo-toggle" data-photo-toggle type="checkbox" checked />
+        <span>Photo</span>
+      </label>
+      <button type="button" class="print-button" data-print>Print / PDF</button>
+    </div>
+
+    <main class="sheet">
+      <header class="grid12 items-end">
+        <div class="col-span-3">
+          <div class="photo-slot">
+            <Image src={photo} alt="Chayut Chunsamphran" />
+          </div>
+        </div>
+        <div class="col-span-9">
+          <h1 class="display ml-[-0.4rem]">
+            Chayut<br />Chunsamphran
+          </h1>
+        </div>
+      </header>
+
+      <section class="grid12 mt-6">
+        <div class="col-span-3"></div>
+        <div class="colophon col-span-9 flex flex-wrap items-center gap-x-3 gap-y-1 not-italic">
+          <a href="tel:+66959583990" class="tel-link">
+            <Icon name="lucide:phone" class={iconClass} aria-hidden="true" />
+            <span>+66 95 958 3990</span>
+          </a>
+          <a href="mailto:chun.chayut@gmail.com" class="mail-link">
+            <Icon name="lucide:mail" class={iconClass} aria-hidden="true" />
+            <span>chun.chayut@gmail.com</span>
+          </a>
+          <a href="https://chayut.me" class="web-link">
+            <Icon name="lucide:globe" class={iconClass} aria-hidden="true" />
+            <span>chayut.me</span>
+          </a>
+          <a href="https://github.com/chaychun" class="gh-link">
+            <Icon name="lucide:github" class={iconClass} aria-hidden="true" />
+            <span>github.com/chaychun</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="grid12 avoid-break mt-6">
+        <div class="col-span-3"></div>
+        <div class="col-span-9">
+          <p class="lede">
+            <span class="lead">Interaction-focused designer and developer.</span> Designs and builds
+            digital interfaces end-to-end. Using motion, interaction, and interface craft as tools
+            for clearer, more intuitive software. Based in Bangkok.
+          </p>
+        </div>
+      </section>
+
+      <section class="grid12 avoid-break mt-14 items-baseline">
+        <div class="col-span-3">
+          <div class="meta" aria-hidden="true">&nbsp;</div>
+          <div class="section-label mt-1">Education</div>
+        </div>
+        <div class="body col-span-9">
+          <div class="meta">2025.</div>
+          <div class="role-line mt-1">
+            BSc Physics, <em>First Class Honours, Mahidol University International College.</em>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid12 mt-12 items-baseline">
+        <div class="col-span-3">
+          <div class="meta" aria-hidden="true">&nbsp;</div>
+          <div class="section-label mt-1">Experience</div>
+        </div>
+        <div class="body col-span-9 space-y-5">
+          <div class="avoid-break">
+            <div class="meta">2025-present</div>
+            <div class="role-line mt-1">Independent Designer &amp; Developer</div>
+            <div class="mt-1">
+              Client and self-directed software products across web and desktop, focusing on motion
+              and interaction.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid12 mt-12 items-baseline">
+        <div class="col-span-3">
+          <div class="section-label">Selected work</div>
+        </div>
+        <div class="body col-span-9 space-y-5">
+          <div class="avoid-break">
+            <div class="flex flex-wrap items-baseline gap-4">
+              <span class="role-line">Thai Bus Food Tour</span>
+              <a href="https://www.thaibusfoodtour.co.th" class="web-link meta">
+                <Icon name="lucide:globe" class={iconClass} aria-hidden="true" />
+                <span>thaibusfoodtour.co.th</span>
+              </a>
+            </div>
+            <div class="mt-1">
+              Designed and built the tour company's trilingual marketing site with a CMS-driven
+              blog, embedded booking, and premium-feeling interactions to match the brand's
+              identity. Astro, React, Tailwind.
+            </div>
+          </div>
+
+          <div class="avoid-break">
+            <div class="flex flex-wrap items-baseline gap-4">
+              <span class="role-line">Interaction &amp; Motion Experiments</span>
+              <a href="https://chayut.me" class="web-link meta">
+                <Icon name="lucide:globe" class={iconClass} aria-hidden="true" />
+                <span>chayut.me</span>
+              </a>
+            </div>
+            <div class="mt-1">
+              An ongoing collection of micro-UX and motion studies exploring interface paradigms:
+              gesture-driven animation, adaptive navigation, playful UI, and more.
+            </div>
+          </div>
+
+          <div class="avoid-break">
+            <div class="flex flex-wrap items-baseline gap-4">
+              <span class="role-line">Generated.Wiki</span>
+              <span class="meta flex items-center gap-4">
+                <a href="https://github.com/chaychun/generated-wiki" class="gh-link">
+                  <Icon name="lucide:github" class={iconClass} aria-hidden="true" />
+                  <span>chaychun/generated-wiki</span>
+                </a>
+                <a href="https://generated.wiki" class="web-link">
+                  <Icon name="lucide:globe" class={iconClass} aria-hidden="true" />
+                  <span>generated.wiki</span>
+                </a>
+              </span>
+            </div>
+            <div class="mt-1">
+              An encyclopedia that writes itself: every article is generated on demand and rewrites
+              itself per reader, surfacing different depth and detail by reading level or persona.
+            </div>
+          </div>
+
+          <div class="avoid-break">
+            <div class="flex flex-wrap items-baseline gap-4">
+              <span class="role-line">Mula</span>
+              <a href="https://github.com/chaychun/mula" class="gh-link meta">
+                <Icon name="lucide:github" class={iconClass} aria-hidden="true" />
+                <span>chaychun/mula</span>
+              </a>
+            </div>
+            <div class="mt-1">
+              AI coding tutor whose agent reviews each submission and writes the next lesson around
+              exactly where the learner struggled. Packaged as a native desktop app that runs
+              entirely on-device.
+            </div>
+          </div>
+
+          <div class="avoid-break">
+            <div class="flex flex-wrap items-baseline gap-4">
+              <span class="role-line">InternShips</span>
+              <span class="meta flex items-center gap-4">
+                <a href="https://github.com/chaychun/rotten-apple" class="gh-link">
+                  <Icon name="lucide:github" class={iconClass} aria-hidden="true" />
+                  <span>chaychun/rotten-apple</span>
+                </a>
+                <a href="https://rukoilla.itch.io/intern-ships" class="web-link">
+                  <Icon name="lucide:globe" class={iconClass} aria-hidden="true" />
+                  <span>rukoilla.itch.io/intern-ships</span>
+                </a>
+              </span>
+            </div>
+            <div class="mt-1">
+              A cozy 3D creature-catching game for Comfy Jam Summer 2026, built with two
+              collaborators. Designed and built core systems end to end: quests, logbook, spawning
+              and zones, and a day/time cycle. Built in Godot.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid12 mt-12 items-baseline">
+        <div class="col-span-3">
+          <div class="section-label">Research</div>
+        </div>
+        <div class="body col-span-9 space-y-5">
+          <div class="avoid-break">
+            <div class="role-line">
+              Unsupervised PINN for solving Schrödinger Equation in 1D Potential Wells
+            </div>
+            <div class="mt-1">
+              Unsupervised neural network that finds a quantum system's ground state with no
+              training data, using a physics-informed loss derived from the Schrödinger equation.
+              Ground-state energy accurate within 0.5% of exact.
+            </div>
+          </div>
+          <div class="avoid-break">
+            <div class="role-line">
+              Mechanism of Restrained Horizontal Surface Frosting with Acoustic Wave
+            </div>
+            <div class="mt-1">
+              Application of sound wave for restraining frost formation on horizontal surfaces.
+              Presented at the International Conference of Young Scientists and national science
+              fairs.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid12 avoid-break mt-12 items-baseline">
+        <div class="col-span-3">
+          <div class="meta" aria-hidden="true">&nbsp;</div>
+          <div class="section-label">Skills</div>
+        </div>
+        <div class="body col-span-9">
+          <div class="grid grid-cols-2 gap-x-8 gap-y-3">
+            <div>
+              <div class="meta">Design</div>
+              <div>Interaction &amp; motion design, prototyping, interface systems, Figma.</div>
+            </div>
+            <div>
+              <div class="meta">Engineering</div>
+              <div>
+                TypeScript, React, Next.js, TanStack, Tailwind CSS; Tauri, Electrobun; Godot,
+                Python.
+              </div>
+            </div>
+            <div>
+              <div class="meta">AI &amp; agents</div>
+              <div>Claude Agent SDK, MCP, LLM tool use, Claude Code.</div>
+            </div>
+            <div>
+              <div class="meta">Spoken</div>
+              <div>Thai — <em>native</em><br />English — <em>fluent</em>.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid12 avoid-break mt-12 items-baseline">
+        <div class="col-span-3">
+          <div class="meta" aria-hidden="true">&nbsp;</div>
+          <div class="section-label mt-1">Certifications</div>
+        </div>
+        <div class="body col-span-9">
+          <div class="meta">2025.</div>
+          <div class="role-line mt-1">
+            Animations on the Web, <em>by Emil Kowalski.</em>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-cv]")
+  const toggle = document.querySelector<HTMLInputElement>("[data-photo-toggle]")
+  const printButton = document.querySelector<HTMLButtonElement>("[data-print]")
+
+  toggle?.addEventListener("change", () => root?.classList.toggle("with-photo", toggle.checked))
+  printButton?.addEventListener("click", () => window.print())
+</script>

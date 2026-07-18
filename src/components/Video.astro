@@ -1,0 +1,73 @@
+---
+interface Props {
+  playbackId: string
+  class?: string
+  objectPosition?: string
+}
+
+const { playbackId, class: className = "", objectPosition } = Astro.props
+const playerStyle = [
+  "--controls: none",
+  "--media-background-color: #fafaf9",
+  "--controls-backdrop-color: transparent",
+  "--media-object-fit: cover",
+  objectPosition ? `--media-object-position: ${objectPosition}` : "",
+  "background-color: #fafaf9",
+]
+  .filter(Boolean)
+  .join(";")
+---
+
+<mux-player
+  data-video
+  playback-id={playbackId}
+  autoplay="muted"
+  muted
+  loop
+  nohotkeys
+  playsinline
+  disable-tracking
+  disable-cookies
+  stream-type="on-demand"
+  thumbnail-time="0"
+  class={className}
+  style={playerStyle}
+></mux-player>
+
+<script>
+  import "@mux/mux-player"
+  import type MuxPlayerElement from "@mux/mux-player"
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const player = entry.target as MuxPlayerElement
+        if (player.closest("[data-video-playback-owner]")) continue
+        if (entry.isIntersecting) {
+          void player.play().catch(() => {})
+        } else {
+          player.pause()
+        }
+      }
+    },
+    { threshold: 0.5 },
+  )
+
+  const initialize = (root: ParentNode) => {
+    const players = root.querySelectorAll<MuxPlayerElement>("[data-video]:not([data-ready])")
+    for (const player of players) {
+      player.dataset.ready = ""
+      observer.observe(player)
+    }
+  }
+
+  initialize(document)
+
+  new MutationObserver((records) => {
+    for (const record of records) {
+      for (const node of record.addedNodes) {
+        if (node instanceof Element) initialize(node)
+      }
+    }
+  }).observe(document.body, { childList: true, subtree: true })
+</script>

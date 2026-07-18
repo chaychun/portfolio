@@ -1,0 +1,44 @@
+---
+import "../styles.css"
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Motion Test — Interaction Lab</title>
+  </head>
+  <body>
+    <main class="grid min-h-screen place-items-center bg-stone-950 text-stone-50">
+      <button
+        data-motion-test
+        class="rounded-full bg-orange-500 px-6 py-3 text-sm font-medium"
+      >
+        Tailwind + Motion
+      </button>
+    </main>
+  </body>
+</html>
+
+<script>
+  import { animate, hover, press } from "motion"
+
+  const button = document.querySelector<HTMLButtonElement>("[data-motion-test]")
+
+  if (button) {
+    animate(button, { opacity: [0, 1], scale: [0.8, 1] }, { type: "spring", stiffness: 400, damping: 20 })
+    hover(button, () => {
+      animate(button, { scale: 1.08 }, { type: "spring", stiffness: 400, damping: 20 })
+      return () => {
+        animate(button, { scale: 1 }, { type: "spring", stiffness: 400, damping: 20 })
+      }
+    })
+    press(button, () => {
+      animate(button, { scale: 0.94 }, { type: "spring", stiffness: 400, damping: 20 })
+      return () => {
+        animate(button, { scale: 1 }, { type: "spring", stiffness: 400, damping: 20 })
+      }
+    })
+  }
+</script>

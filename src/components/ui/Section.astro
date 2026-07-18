@@ -1,0 +1,17 @@
+---
+interface Props {
+  id?: string
+  screenLabel?: string
+  class?: string
+}
+
+const { id, screenLabel, class: className = "" } = Astro.props
+---
+
+<section
+  id={id}
+  data-screen-label={screenLabel}
+  class:list={["py-18 cols:py-24", className]}
+>
+  <slot />
+</section>

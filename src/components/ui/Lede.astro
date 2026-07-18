@@ -1,0 +1,12 @@
+---
+interface Props {
+  variant?: "default" | "lead"
+  class?: string
+}
+
+const { variant = "default", class: className = "" } = Astro.props
+---
+
+<p class:list={[variant === "lead" ? "text-about-lead" : "text-lede", className]}>
+  <slot />
+</p>

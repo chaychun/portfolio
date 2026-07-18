@@ -1,0 +1,33 @@
+---
+import MarkdownText from "@/components/MarkdownText.astro"
+import Video from "@/components/Video.astro"
+
+interface Props {
+  interaction: {
+    title: string
+    description: string
+    playbackId: string
+  }
+}
+
+const { interaction } = Astro.props
+---
+
+<div class="grid gap-5">
+  <div class="relative aspect-[4/3] overflow-hidden">
+    <Video
+      playbackId={interaction.playbackId}
+      class="absolute inset-0 h-full w-full"
+    />
+  </div>
+  <div class="grid gap-2 px-1">
+    <span class="text-xl leading-tight font-normal tracking-[-0.012em]">
+      {interaction.title}
+    </span>
+    <span
+      class="text-[14.5px] leading-[1.55] [text-wrap:pretty] text-muted-foreground"
+    >
+      <MarkdownText text={interaction.description} />
+    </span>
+  </div>
+</div>

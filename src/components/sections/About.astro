@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content"
+
+import Link from "@/components/Link.astro"
+import WaveName from "@/components/WaveName.astro"
+import Container from "@/components/ui/Container.astro"
+import Lede from "@/components/ui/Lede.astro"
+import Section from "@/components/ui/Section.astro"
+
+const socialLinks = (await getCollection("socialLinks")).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+---
+
+<Section id="about" screenLabel="About" class="pt-24 pb-20 cols:pt-30">
+  <Container>
+    <div
+      class="grid gap-x-(--container-gutter) gap-y-8 cols:grid-cols-2 cols:grid-rows-[auto_1fr] cols:items-end"
+    >
+      <div
+        aria-hidden="true"
+        class="order-1 size-5 rounded-full bg-brand cols:col-start-1 cols:row-start-1"
+      >
+      </div>
+      <dl class="order-3 grid gap-5 cols:col-start-1 cols:row-start-2 cols:self-end">
+        <div class="grid grid-cols-[120px_1fr] gap-4 text-sm leading-6">
+          <dt class="pt-[3px] text-sm text-muted-foreground">Based</dt>
+          <dd class="m-0 text-foreground">Bangkok, Thailand</dd>
+        </div>
+        <div class="grid grid-cols-[120px_1fr] gap-4 text-sm leading-6">
+          <dt class="pt-[3px] text-sm text-muted-foreground">Focus</dt>
+          <dd class="m-0 text-foreground">Interaction &amp; interface design</dd>
+        </div>
+        <div class="grid grid-cols-[120px_1fr] gap-4 text-sm leading-6">
+          <dt class="pt-[3px] text-sm text-muted-foreground">Reach out</dt>
+          <dd class="m-0 flex flex-wrap items-center gap-4 text-foreground">
+            {
+              socialLinks.map(({ data }) => (
+                <Link href={data.href}>{data.label}</Link>
+              ))
+            }
+          </dd>
+        </div>
+      </dl>
+      <div class="order-2 cols:col-start-2 cols:row-span-2 cols:row-start-1">
+        <Lede
+          variant="lead"
+          class="mb-7 [text-box-edge:cap_alphabetic] [text-box-trim:trim-start]"
+        >
+          Hi, I'm <WaveName>Chayut</WaveName>. I design and build calm, opinionated software.
+        </Lede>
+        <Lede class="mb-4">
+          I believe great software should enhance human cognition, not deplete it. My goal is to
+          build interfaces that are intuitive, efficient, and delightful, using motion and
+          interaction as means for improving communication and usability.
+        </Lede>
+        <Lede>
+          You can see some of my work below. Every project here was designed and built end to end
+          — design, frontend, and backend where there is one.
+        </Lede>
+      </div>
+    </div>
+  </Container>
+</Section>

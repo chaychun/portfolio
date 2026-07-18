@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string
+  variant?: "default" | "quiet"
+  class?: string
+}
+
+const { href, variant = "default", class: className = "" } = Astro.props
+const external = /^https?:\/\//.test(href)
+const classes = [
+  "transition-colors duration-150 ease-[ease] hover:text-brand",
+  variant === "default" ? "text-stone-700 dark:text-stone-300" : "",
+  className,
+]
+---
+
+<a
+  class:list={classes}
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  <slot />
+</a>
