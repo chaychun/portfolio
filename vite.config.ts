@@ -20,6 +20,7 @@ const config = defineConfig({
       prerender: {
         enabled: true,
         crawlLinks: true,
+        concurrency: 1,
         failOnError: true,
         filter: ({ path }) => path !== "/resume" && path !== "/cv",
       },
