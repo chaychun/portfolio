@@ -5,13 +5,19 @@ export type Interaction = {
   playbackId: string
 }
 
+export const interactionsSection = {
+  title: "Interactions",
+  description:
+    "An ongoing collection of interactive experiments exploring interface details and how they shape clarity, intent, and the feel of everyday software.",
+}
+
 export const interactions: Interaction[] = [
   {
-    slug: "page-stack",
-    title: "Page stack",
+    slug: "dime-tabs",
+    title: "Dime! tabs",
     description:
-      "Experimental hypertext navigation where new pages are stacked on a book-like interface for showing a visual, linear exploration trail through a non-linear network. Based on pattern popularized by [Andy Matuschak](https://notes.andymatuschak.org/)",
-    playbackId: "CiIsMfdPuZ63u700aDunnpbDXKWJCkThNWGw8zoEMlKg",
+      "Tabs animation for paginated iOS navigation, inspired by the [Dime!](https://dime.co.th/) app.",
+    playbackId: "esy5pNnh1tn1OdI02HWt602CDtJfNLnpwXhj8f01sDI9As",
   },
   {
     slug: "polaroid-carousel",
@@ -32,6 +38,13 @@ export const interactions: Interaction[] = [
     description:
       "Expandable notification with multipurpose panel. Built on top of a dropdown component from [Morphin](https://morphin.dev/components/activity-dropdown).",
     playbackId: "go01NVJMfIhy9HUw7ioY3oDzG5ulJkJw8jPqYm1NzPV4",
+  },
+  {
+    slug: "page-stack",
+    title: "Page stack",
+    description:
+      "Experimental hypertext navigation where new pages are stacked on a book-like interface for showing a visual, linear exploration trail through a non-linear network. Based on pattern popularized by [Andy Matuschak](https://notes.andymatuschak.org/)",
+    playbackId: "CiIsMfdPuZ63u700aDunnpbDXKWJCkThNWGw8zoEMlKg",
   },
   {
     slug: "wave-hello",
