@@ -1,0 +1,57 @@
+<button
+  type="button"
+  data-wave-name
+  aria-label="Wave hello"
+  class="relative inline cursor-pointer text-brand not-italic outline-none focus-visible:underline"
+>
+  <slot />
+  <span
+    data-wave-stage
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-1 left-1/2 z-10 h-0 w-0 -translate-x-1/2"
+  ></span>
+</button>
+
+<script>
+  import { animate } from "motion"
+
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-wave-name]")
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches
+
+  for (const button of buttons) {
+    button.addEventListener("click", () => {
+      const stage = button.querySelector<HTMLElement>("[data-wave-stage]")
+      if (!stage) return
+
+      const wave = document.createElement("span")
+      const startX = (Math.random() - 0.5) * 120
+      const drift = startX * 1.4 + (Math.random() - 0.5) * 80
+      const rotation = (Math.random() - 0.5) * 40
+
+      wave.textContent = "👋"
+      wave.className = "absolute -translate-x-1/2 select-none"
+      wave.style.cssText = "left:0;top:0;font-size:1.1em"
+      stage.append(wave)
+
+      if (!reduced) {
+        animate(button, { scale: [1, 0.92, 1.06, 1] }, { duration: 0.45, ease: "easeOut" })
+      }
+
+      const animation = animate(
+        wave,
+        reduced
+          ? { opacity: [0, 1, 0], y: [0, -8], scale: [0.6, 1] }
+          : {
+              opacity: [0, 1, 1, 0],
+              y: [0, -32, -68, -110],
+              x: [startX, startX + (drift - startX) * 0.35, startX + (drift - startX) * 0.75, drift],
+              scale: [0.6, 1.2, 1, 0.85],
+              rotate: [0, -32, 32, -24, 24, rotation],
+            },
+        { duration: reduced ? 0.6 : 1.4, ease: "easeOut" },
+      )
+
+      void animation.then(() => wave.remove())
+    })
+  }
+</script>

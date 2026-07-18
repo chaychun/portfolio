@@ -1,0 +1,147 @@
+---
+import Video from "@/components/Video.astro"
+
+type StorySlide = string | { src: string; objectPosition?: string }
+
+interface Props {
+  id: string
+  slides: StorySlide[]
+}
+
+const { id, slides } = Astro.props
+
+const source = (slide: StorySlide) => (typeof slide === "string" ? slide : slide.src)
+const position = (slide: StorySlide) =>
+  typeof slide === "object" ? slide.objectPosition : undefined
+const isImage = (slide: StorySlide) => {
+  const src = source(slide)
+  return src.includes("/") || src.includes(".")
+}
+---
+
+<div data-story={id} data-active="0">
+  <div class="relative aspect-[4/3] overflow-hidden cols:aspect-[16/9]" data-story-viewport>
+    <div class="absolute inset-0" data-story-layers>
+      {
+        slides[0] && (
+          <div class="absolute inset-0 opacity-100" data-story-layer>
+            {isImage(slides[0]) ? (
+              <img
+                src={source(slides[0])}
+                alt=""
+                class="absolute inset-0 h-full w-full object-cover"
+                style={position(slides[0]) ? `object-position: ${position(slides[0])}` : undefined}
+              />
+            ) : (
+              <Video
+                playbackId={source(slides[0])}
+                class="absolute inset-0 h-full w-full"
+                objectPosition={position(slides[0])}
+              />
+            )}
+          </div>
+        )
+      }
+    </div>
+    <button
+      type="button"
+      aria-label="Previous slide"
+      data-story-prev
+      class="absolute inset-y-0 left-0 z-10 w-[35%] cursor-w-resize"
+    ></button>
+    <button
+      type="button"
+      aria-label="Next slide"
+      data-story-next
+      class="absolute inset-y-0 right-0 z-10 w-[65%] cursor-e-resize"
+    ></button>
+  </div>
+
+  {
+    slides.map((slide, index) => (
+      <template data-story-slide={index}>
+        <div class="absolute inset-0 opacity-0 transition-opacity duration-[400ms] ease-out" data-story-layer>
+          {isImage(slide) ? (
+            <img
+              src={source(slide)}
+              alt=""
+              class="absolute inset-0 h-full w-full object-cover"
+              style={position(slide) ? `object-position: ${position(slide)}` : undefined}
+            />
+          ) : (
+            <Video
+              playbackId={source(slide)}
+              class="absolute inset-0 h-full w-full"
+              objectPosition={position(slide)}
+            />
+          )}
+        </div>
+      </template>
+    ))
+  }
+</div>
+
+<script>
+  import type MuxPlayerElement from "@mux/mux-player"
+
+  const stories = document.querySelectorAll<HTMLElement>("[data-story]:not([data-ready])")
+
+  for (const story of stories) {
+    story.dataset.ready = ""
+    const layers = story.querySelector<HTMLElement>("[data-story-layers]")
+    const templates = story.querySelectorAll<HTMLTemplateElement>("template[data-story-slide]")
+    let active = 0
+    let visible = false
+
+    const syncPlayback = () => {
+      for (const player of story.querySelectorAll<MuxPlayerElement>("mux-player")) {
+        if (visible) void player.play().catch(() => {})
+        else player.pause()
+      }
+    }
+
+    const goTo = (index: number) => {
+      const next = Math.max(0, Math.min(templates.length - 1, index))
+      if (next === active || !layers) return
+      const template = templates[next]
+      const layer = template?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined
+      if (!layer) return
+
+      active = next
+      story.dataset.active = String(active)
+      story.dispatchEvent(new CustomEvent("story-change", { detail: active }))
+
+      layers.append(layer)
+      requestAnimationFrame(() => requestAnimationFrame(() => layer.classList.replace("opacity-0", "opacity-100")))
+      syncPlayback()
+
+      layer.addEventListener(
+        "transitionend",
+        (event) => {
+          if (event.propertyName !== "opacity") return
+          for (const sibling of layers.querySelectorAll<HTMLElement>("[data-story-layer]")) {
+            if (sibling !== layer) sibling.remove()
+          }
+        },
+        { once: true },
+      )
+    }
+
+    story.querySelector("[data-story-prev]")?.addEventListener("click", () => {
+      goTo(active === 0 ? templates.length - 1 : active - 1)
+    })
+    story.querySelector("[data-story-next]")?.addEventListener("click", () => {
+      goTo((active + 1) % templates.length)
+    })
+    story.addEventListener("story-go", (event) => goTo((event as CustomEvent<number>).detail))
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry?.isIntersecting ?? false
+        syncPlayback()
+      },
+      { threshold: 0.5 },
+    )
+    observer.observe(story)
+  }
+</script>

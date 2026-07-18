@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content"
+
+import InteractionGrid from "@/components/InteractionGrid.astro"
+import WorkItem from "@/components/WorkItem.astro"
+import Container from "@/components/ui/Container.astro"
+import Section from "@/components/ui/Section.astro"
+
+const projects = (await getCollection("projects")).sort((a, b) =>
+  a.data.date < b.data.date ? 1 : a.data.date > b.data.date ? -1 : 0,
+)
+const interactions = (await getCollection("interactions")).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+---
+
+<Section id="work" screenLabel="Work">
+  <Container>
+    <div class="grid gap-22 cols:gap-[180px]">
+      {projects.map((project) => <WorkItem id={project.id} project={project.data} />)}
+      <InteractionGrid interactions={interactions} />
+    </div>
+  </Container>
+</Section>

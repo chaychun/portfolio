@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components"
+---
+
+<button
+  type="button"
+  data-ghost-egg
+  aria-hidden="true"
+  tabindex="-1"
+  class="-mr-1 inline-flex cursor-pointer items-center text-muted-foreground opacity-0"
+>
+  <Icon name="lucide:ghost" class="size-3.5" aria-hidden="true" />
+</button>
+
+<script>
+  import { animate } from "motion"
+
+  let triggered = false
+  const ghost = document.querySelector<HTMLButtonElement>("[data-ghost-egg]")
+
+  ghost?.addEventListener("click", async () => {
+    if (triggered) return
+    triggered = true
+    ghost.style.pointerEvents = "none"
+
+    await animate(
+      ghost,
+      {
+        opacity: 1,
+        x: [0, -1.5, 1.5, -1.5, 1.5, -1, 1, 0],
+        y: [0, -9, 0, -12, 0],
+        rotate: [0, -6, 6, -5, 5, -3, 3, 0],
+      },
+      { duration: 0.75, ease: "easeInOut" },
+    )
+
+    await animate(
+      ghost,
+      {
+        opacity: [1, 1, 0],
+        x: -200,
+        y: [0, -13, 0, -16, 0, -10, 0, 0],
+        rotate: [0, -8, 0, -10, 0, -6, 0, 0],
+      },
+      { duration: 1.5, ease: [0.32, 0, 0.45, 1] },
+    )
+  })
+</script>

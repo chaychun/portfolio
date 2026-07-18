@@ -1,12 +1,12 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
+import { fileURLToPath } from "node:url"
 
 import { Resvg } from "@resvg/resvg-js"
 
-const root = join(import.meta.dir, "..")
+const root = fileURLToPath(new URL("..", import.meta.url))
 const publicDir = join(root, "public")
 const fontPath = join(publicDir, "fonts/PPNeueMontreal-Regular.otf")
-const fontBuffer = readFileSync(fontPath)
 
 function render(svgInput: string, outPath: string, width: number) {
   const vb = svgInput.match(/viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/)
@@ -20,7 +20,7 @@ function render(svgInput: string, outPath: string, width: number) {
   const resvg = new Resvg(svg, {
     fitTo: { mode: "width", value: width },
     font: {
-      fontBuffers: [fontBuffer],
+      fontFiles: [fontPath],
       defaultFontFamily: "PP Neue Montreal",
       loadSystemFonts: false,
     },

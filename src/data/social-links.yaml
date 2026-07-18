@@ -1,0 +1,19 @@
+- id: email
+  order: 1
+  label: Email
+  href: mailto:chun.chayut@gmail.com
+
+- id: x
+  order: 2
+  label: X
+  href: https://x.com/chayutc_
+
+- id: github
+  order: 3
+  label: GitHub
+  href: https://github.com/chaychun
+
+- id: contra
+  order: 4
+  label: Contra
+  href: https://contra.com/chunchayut?utm_campaign=HireMeOnContra&utm_medium=2a14c090-a68c-4e2a-be3f-f6649d266c80

@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @font-face {
   font-family: "PP Neue Montreal";
@@ -11,7 +9,7 @@
 }
 
 @custom-variant dark (&:is(.dark *));
-@source "../**/*.{ts,tsx}";
+@source "../**/*.{astro,ts,tsx}";
 
 @theme inline {
   --container-max: 1320px;

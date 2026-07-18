@@ -1,0 +1,63 @@
+---
+import CtaList from "@/components/CtaList"
+import MarkdownText from "@/components/MarkdownText.astro"
+import StoryBars from "@/components/StoryBars.astro"
+import WorkStory from "@/components/WorkStory.astro"
+
+type StorySlide = string | { src: string; objectPosition?: string }
+type ProjectCta = { label: string; href: string }
+
+interface Props {
+  id: string
+  project: {
+    title: string
+    role: string
+    tags: string[]
+    description: string
+    media: StorySlide[]
+    ctas?: ProjectCta[]
+  }
+}
+
+const { id, project } = Astro.props
+---
+
+<article class="grid gap-8">
+  <WorkStory id={id} slides={project.media} />
+  <div class="grid items-start gap-x-[var(--container-gutter)] gap-y-8 cols:grid-cols-2">
+    <div>
+      <StoryBars storyId={id} total={project.media.length} />
+      <h3 class="text-work-title">
+        {project.title} <span class="text-muted-foreground">— {project.role}</span>
+      </h3>
+      <div
+        class="mt-3.5 flex flex-wrap items-center gap-x-2.5 text-[13.5px] text-muted-foreground"
+      >
+        {
+          project.tags.map((tag, index) => (
+            <>
+              {index > 0 && (
+                <svg
+                  aria-hidden="true"
+                  width="3"
+                  height="3"
+                  viewBox="0 0 3 3"
+                  class="text-brand"
+                >
+                  <circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" />
+                </svg>
+              )}
+              <span>{tag}</span>
+            </>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <p class="text-base leading-relaxed [text-wrap:pretty] text-muted-foreground">
+        <MarkdownText text={project.description} />
+      </p>
+      {project.ctas?.length && <CtaList ctas={project.ctas} client:visible />}
+    </div>
+  </div>
+</article>
