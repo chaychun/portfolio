@@ -1,10 +1,179 @@
 ---
+import CtaList from "@/components/CtaList"
+import Container from "@/components/ui/Container.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+
+const ctas = [{ label: "Return home", href: "/" }]
 ---
 
-<BaseLayout title="Page not found — Chayut Chunsamphran">
-  <main class="container mx-auto p-4 pt-16">
-    <h1>404</h1>
-    <p>The requested page could not be found.</p>
+<BaseLayout
+  title="Page not found — Chayut Chunsamphran"
+  description="The page you’re looking for isn’t here."
+>
+  <main class="relative isolate h-svh overflow-hidden pt-[160px]">
+    <Container class="relative z-10">
+      <section
+        class="grid items-end gap-x-(--container-gutter) gap-y-6 border-t border-border pt-6 cols:grid-cols-2"
+        aria-labelledby="missing-title"
+      >
+        <div class="max-w-xl cols:col-start-2">
+          <h1 id="missing-title" class="text-work-title">Page not found</h1>
+          <p class="lede">
+            The address may be incomplete, or the page may have moved somewhere new.
+          </p>
+          <CtaList {ctas} client:visible />
+        </div>
+      </section>
+    </Container>
+
+    <div class="missing-visual" aria-hidden="true">
+      <svg class="missing-numeral" data-missing-numeral viewBox="0 0 1000 500">
+        <defs>
+          <clipPath id="missing-numeral-clip">
+            <text
+              class="missing-numeral-text"
+              x="480"
+              y="500"
+              text-anchor="middle"
+              textLength="1000"
+              lengthAdjust="spacingAndGlyphs"
+            >404</text>
+          </clipPath>
+        </defs>
+        <text
+          class="missing-numeral-text"
+          x="480"
+          y="500"
+          text-anchor="middle"
+          textLength="1000"
+          lengthAdjust="spacingAndGlyphs"
+        >404</text>
+        <g data-grid-trail clip-path="url(#missing-numeral-clip)"></g>
+      </svg>
+    </div>
   </main>
 </BaseLayout>
+
+<script>
+  const numeral = document.querySelector<SVGSVGElement>("[data-missing-numeral]")
+  const trail = numeral?.querySelector<SVGGElement>("[data-grid-trail]")
+  const root = numeral?.closest<HTMLElement>("main")
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches
+  const finePointer = matchMedia("(pointer: fine)").matches
+
+  if (numeral && trail && root && !reducedMotion && finePointer) {
+    const cellSize = 220
+    const fadeDuration = 900
+    const namespace = "http://www.w3.org/2000/svg"
+    const active = new Map<string, SVGRectElement>()
+    let previous: { column: number; row: number } | null = null
+
+    const light = (column: number, row: number) => {
+      const key = `${column}:${row}`
+      active.get(key)?.remove()
+
+      const bounds = numeral.getBoundingClientRect()
+      const scaleX = 1000 / bounds.width
+      const scaleY = 500 / bounds.height
+      const rectangle = document.createElementNS(namespace, "rect")
+
+      rectangle.setAttribute("x", String((column * cellSize - bounds.left + 1) * scaleX))
+      rectangle.setAttribute("y", String((row * cellSize - bounds.top + 1) * scaleY))
+      rectangle.setAttribute("width", String((cellSize - 2) * scaleX))
+      rectangle.setAttribute("height", String((cellSize - 2) * scaleY))
+      rectangle.setAttribute("fill", "var(--brand)")
+      rectangle.setAttribute("opacity", "1")
+      trail.append(rectangle)
+      active.set(key, rectangle)
+
+      const animation = rectangle.animate([{ opacity: 1 }, { opacity: 0 }], {
+        duration: fadeDuration,
+        easing: "ease-out",
+        fill: "forwards",
+      })
+
+      void animation.finished
+        .then(() => {
+          if (active.get(key) === rectangle) active.delete(key)
+          rectangle.remove()
+        })
+        .catch(() => {})
+    }
+
+    root.addEventListener("pointermove", (event) => {
+      const column = Math.floor(event.clientX / cellSize)
+      const row = Math.floor(event.clientY / cellSize)
+      const current = { column, row }
+
+      if (previous) {
+        const columns = column - previous.column
+        const rows = row - previous.row
+        const steps = Math.max(Math.abs(columns), Math.abs(rows))
+
+        for (let step = 0; step <= steps; step++) {
+          const amount = steps === 0 ? 1 : step / steps
+          light(
+            Math.round(previous.column + columns * amount),
+            Math.round(previous.row + rows * amount),
+          )
+        }
+      } else {
+        light(column, row)
+      }
+
+      previous = current
+    })
+
+    root.addEventListener("pointerleave", () => {
+      previous = null
+    })
+  }
+</script>
+
+<style>
+  h1 {
+    margin: 0;
+  }
+
+  .lede {
+    max-width: 36ch;
+    margin: 14px 0 0;
+    color: var(--muted-foreground);
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .missing-visual {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw;
+    max-height: 60svh;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .missing-numeral {
+    position: relative;
+    left: 50%;
+    display: block;
+    width: max(100vw, 900px);
+    max-width: none;
+    flex: none;
+    transform: translateX(-50%);
+  }
+
+  .missing-numeral text {
+    fill: #f5f4f2;
+    font-family: var(--font-sans);
+    font-size: 600px;
+    letter-spacing: -0.06em;
+    user-select: none;
+  }
+</style>
