@@ -119,8 +119,11 @@ const isImage = (slide: StorySlide) => {
         "transitionend",
         (event) => {
           if (event.propertyName !== "opacity") return
-          for (const sibling of layers.querySelectorAll<HTMLElement>("[data-story-layer]")) {
-            if (sibling !== layer) sibling.remove()
+          let previous = layer.previousElementSibling
+          while (previous) {
+            const candidate = previous
+            previous = candidate.previousElementSibling
+            candidate.remove()
           }
         },
         { once: true },
