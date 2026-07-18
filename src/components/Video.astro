@@ -42,6 +42,7 @@ const playerStyle = [
     (entries) => {
       for (const entry of entries) {
         const player = entry.target as MuxPlayerElement
+        if (player.closest("[data-video-playback-owner]")) continue
         if (entry.isIntersecting) {
           void player.play().catch(() => {})
         } else {

@@ -19,7 +19,7 @@ const isImage = (slide: StorySlide) => {
 }
 ---
 
-<div data-story={id} data-active="0">
+<div data-story={id} data-active="0" data-video-playback-owner>
   <div class="relative aspect-[4/3] overflow-hidden cols:aspect-[16/9]" data-story-viewport>
     <div class="absolute inset-0" data-story-layers>
       {
@@ -94,9 +94,13 @@ const isImage = (slide: StorySlide) => {
     let visible = false
 
     const syncPlayback = () => {
+      const activeLayer = layers?.lastElementChild
       for (const player of story.querySelectorAll<MuxPlayerElement>("mux-player")) {
-        if (visible) void player.play().catch(() => {})
-        else player.pause()
+        if (visible && activeLayer?.contains(player)) {
+          void player.play().catch(() => {})
+        } else {
+          player.pause()
+        }
       }
     }
 
