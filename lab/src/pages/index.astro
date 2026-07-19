@@ -1,13 +1,39 @@
 ---
 import "../styles.css"
+
+const experiments = [
+  { href: "/wheel-picker", title: "Gooey Date Picker", note: "goo-welded pills, ios drum" },
+  { href: "/test", title: "Motion Test", note: "tailwind + motion smoke test" },
+]
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Interaction Lab</title>
   </head>
-  <body></body>
+  <body>
+    <main class="min-h-screen bg-stone-950 px-8 py-20 text-stone-50">
+      <div class="mx-auto w-full max-w-2xl">
+        <h1 class="text-section">Interaction Lab</h1>
+        <ul class="mt-10 divide-y divide-white/10 border-y border-white/10">
+          {
+            experiments.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="group flex items-baseline justify-between gap-6 py-5 transition-colors hover:text-brand"
+                >
+                  <span class="text-2xl">{item.title}</span>
+                  <span class="text-sm text-stone-500 group-hover:text-stone-400">{item.note}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </main>
+  </body>
 </html>

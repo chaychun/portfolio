@@ -1,3 +1,10 @@
+- id: gooey-date-picker
+  title: Gooey date picker
+  description: Date picker that separates into day, month, and year fields on edit. Press and hold a pill and it grows into an iOS-style drum.
+  date: 2026-07
+  pinned: true
+  playbackId: xE2Yz2eAH01T47mq5KsMSW8l8O6cGzbMvXPgB6K02m0100M
+
 - id: dime-tabs
   title: Dime! tabs
   description: Tabs animation for paginated iOS navigation, inspired by the [Dime!](https://dime.co.th/) app.
