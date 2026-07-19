@@ -6,6 +6,7 @@
     - Engineering
   description: Prototype of an encyclopedia where all articles are generated on-demand by LLMs. No permanent knowledge base or storage. Every entry can be tailored to the reader's persona and reading level on a subject-to-subject basis.
   date: 2026-05
+  pinned: false
   media:
     - jmh7HV3Gfm8ns7ug76f4g1QI9GGyWdDY00MiXloSHyDw
     - BaAu00m59jDEupNy9C01yzXiwTkWE6nlpadzVlL3AnJ7w
@@ -23,6 +24,7 @@
     - Engineering
   description: Designed and built the tour company's trilingual marketing site with a CMS-driven blog, embedded booking, and premium-feeling interactions to match the brand's identity. Astro, React, Tailwind.
   date: 2025-11
+  pinned: false
   media:
     - src: 1A6frzuBJ48F2aUz3oL6ap84Xu1JmhDhLTEIbIgFJKY
       objectPosition: center bottom

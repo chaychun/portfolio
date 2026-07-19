@@ -1,65 +1,76 @@
 - id: dime-tabs
-  order: 1
   title: Dime! tabs
   description: Tabs animation for paginated iOS navigation, inspired by the [Dime!](https://dime.co.th/) app.
+  date: 2026-07
+  pinned: false
   playbackId: esy5pNnh1tn1OdI02HWt602CDtJfNLnpwXhj8f01sDI9As
 
 - id: polaroid-carousel
-  order: 2
   title: Polaroid carousel
   description: A stack of cards that expands into a gesture-based carousel modal.
+  date: 2025-08
+  pinned: false
   playbackId: JVJ601pnLybEMZtJ01CF7WrTuXk7hzUT01t00vOLrJHnl5U
 
 - id: ios-camera-capture
-  order: 3
   title: iOS camera capture
   description: Capture mode selector with gesture-based controls inspired by the iOS camera app.
+  date: 2026-04
+  pinned: false
   playbackId: suT7Az9GNduIq00A00f3yN9eIo00u8gses3k5cjwzrzwJA
 
 - id: expandable-notifications
-  order: 4
   title: Expandable notifications
   description: Expandable notification with multipurpose panel. Built on top of a dropdown component from [Morphin](https://morphin.dev/components/activity-dropdown).
+  date: 2026-03
+  pinned: true
   playbackId: go01NVJMfIhy9HUw7ioY3oDzG5ulJkJw8jPqYm1NzPV4
 
 - id: page-stack
-  order: 5
   title: Page stack
   description: Experimental hypertext navigation where new pages are stacked on a book-like interface for showing a visual, linear exploration trail through a non-linear network. Based on pattern popularized by [Andy Matuschak](https://notes.andymatuschak.org/)
+  date: 2025-08
+  pinned: true
   playbackId: CiIsMfdPuZ63u700aDunnpbDXKWJCkThNWGw8zoEMlKg
 
 - id: wave-hello
-  order: 6
   title: Wave hello
   description: Psst ... try clicking my name up top.
+  date: 2026-04
+  pinned: false
   playbackId: aI02022J00faukzRYMmVnzH3LJnS4Isp6ixc01f7BkA2cl00
 
 - id: variable-font-selector
-  order: 7
   title: Variable font selector
   description: A category selector that uses variable font weight and size to indicate the active item.
+  date: 2025-04
+  pinned: false
   playbackId: YaL9f5Ejr3ytVZxRYhuELKTnyp2rt6KpkI202fqDoepA
 
 - id: morphing-pill-button
-  order: 8
   title: Morphing pill button
   description: Pill button background morphs into a circular state indicator.
+  date: 2026-03
+  pinned: false
   playbackId: ucp486aqhZwRevisrYj1gloezMd15VaDusumjtT6zUs
 
 - id: onboarding-name-input
-  order: 9
   title: Onboarding name input
   description: Stateful input with a playful success state.
+  date: 2026-03
+  pinned: false
   playbackId: ew583FWJDTpSEnHQuHN100LM5o2u6cD2CN00eneTU22Yo
 
 - id: info-panel
-  order: 10
   title: Info panel
   description: An expandable information card with spring-animations.
+  date: 2025-07
+  pinned: true
   playbackId: LfUT9mSBFFALERGpcBfn7ifFRfZlu1AadkpBXctXzNo
 
 - id: parallax-list
-  order: 11
   title: Parallax list
   description: Using mouse position to control list instead of scroll, giving a parallax-like effect.
+  date: 2025-04
+  pinned: false
   playbackId: rHaqkBd00c93COF69RI1b5dHecCrGFDHxJAiTO6QFaYg

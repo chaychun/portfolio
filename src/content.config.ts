@@ -2,6 +2,8 @@ import { file } from "astro/loaders"
 import { z } from "astro/zod"
 import { defineCollection } from "astro:content"
 
+const monthSchema = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/)
+
 const projects = defineCollection({
   loader: file("src/data/projects.yaml"),
   schema: z.object({
@@ -9,7 +11,8 @@ const projects = defineCollection({
     role: z.string(),
     tags: z.array(z.string()),
     description: z.string(),
-    date: z.string(),
+    date: monthSchema,
+    pinned: z.boolean(),
     media: z.array(
       z.union([
         z.string(),
@@ -33,9 +36,10 @@ const projects = defineCollection({
 const interactions = defineCollection({
   loader: file("src/data/interactions.yaml"),
   schema: z.object({
-    order: z.number(),
     title: z.string(),
     description: z.string(),
+    date: monthSchema,
+    pinned: z.boolean(),
     playbackId: z.string(),
   }),
 })

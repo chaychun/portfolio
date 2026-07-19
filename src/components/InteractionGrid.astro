@@ -1,6 +1,5 @@
 ---
 import InteractionCard from "@/components/InteractionCard.astro"
-import Lede from "@/components/ui/Lede.astro"
 
 interface Props {
   interactions: Array<{
@@ -16,25 +15,12 @@ interface Props {
 const { interactions } = Astro.props
 ---
 
-<div class="grid gap-16">
-  <div class="border-t border-border pt-6">
-    <div class="grid items-start gap-x-[var(--container-gutter)] cols:grid-cols-2">
-      <div class="cols:col-start-2">
-        <h3 class="text-work-title">Interactions</h3>
-        <Lede class="mt-3.5">
-          An ongoing collection of interactive experiments exploring interface details and how
-          they shape clarity, intent, and the feel of everyday software.
-        </Lede>
-      </div>
-    </div>
-  </div>
-  <div
-    class="grid grid-cols-1 items-start gap-x-[var(--container-gutter)] gap-y-10 cols:grid-cols-2"
-  >
-    {
-      interactions.map((interaction) => (
-        <InteractionCard interaction={interaction.data} />
-      ))
-    }
-  </div>
+<div
+  class="grid grid-cols-1 items-start gap-x-[var(--container-gutter)] gap-y-10 cols:grid-cols-2"
+>
+  {
+    interactions.map((interaction) => (
+      <InteractionCard interaction={interaction.data} />
+    ))
+  }
 </div>

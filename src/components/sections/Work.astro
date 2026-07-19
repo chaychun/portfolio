@@ -1,24 +1,70 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, type CollectionEntry } from "astro:content"
 
 import InteractionGrid from "@/components/InteractionGrid.astro"
 import WorkItem from "@/components/WorkItem.astro"
 import Container from "@/components/ui/Container.astro"
 import Section from "@/components/ui/Section.astro"
 
-const projects = (await getCollection("projects")).sort((a, b) =>
-  a.data.date < b.data.date ? 1 : a.data.date > b.data.date ? -1 : 0,
-)
-const interactions = (await getCollection("interactions")).sort(
-  (a, b) => a.data.order - b.data.order,
-)
+type PrioritizedEntry = {
+  id: string
+  data: {
+    title: string
+    date: string
+    pinned: boolean
+  }
+}
+
+const sortByPriority = <T extends PrioritizedEntry>(entries: T[]) =>
+  entries.sort(
+    (a, b) =>
+      Number(b.data.pinned) - Number(a.data.pinned) ||
+      b.data.date.localeCompare(a.data.date) ||
+      a.data.title.localeCompare(b.data.title),
+  )
+
+const projects = sortByPriority(await getCollection("projects"))
+const interactions = sortByPriority(await getCollection("interactions"))
+
+type FeedItem =
+  | { type: "project"; item: CollectionEntry<"projects"> }
+  | { type: "interactions"; items: CollectionEntry<"interactions">[] }
+
+const feed: FeedItem[] = []
+let projectIndex = 0
+let interactionIndex = 0
+
+while (projectIndex < projects.length && interactionIndex < interactions.length) {
+  feed.push({ type: "project", item: projects[projectIndex] })
+  projectIndex += 1
+
+  const items = interactions.slice(interactionIndex, interactionIndex + 4)
+  feed.push({ type: "interactions", items })
+  interactionIndex += items.length
+}
+
+while (projectIndex < projects.length) {
+  feed.push({ type: "project", item: projects[projectIndex] })
+  projectIndex += 1
+}
+
+if (interactionIndex < interactions.length) {
+  feed.push({ type: "interactions", items: interactions.slice(interactionIndex) })
+}
 ---
 
 <Section id="work" screenLabel="Work">
   <Container>
     <div class="grid gap-22 cols:gap-[180px]">
-      {projects.map((project) => <WorkItem id={project.id} project={project.data} />)}
-      <InteractionGrid interactions={interactions} />
+      {
+        feed.map((entry) =>
+          entry.type === "project" ? (
+            <WorkItem id={entry.item.id} project={entry.item.data} />
+          ) : (
+            <InteractionGrid interactions={entry.items} />
+          ),
+        )
+      }
     </div>
   </Container>
 </Section>
