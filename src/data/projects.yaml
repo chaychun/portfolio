@@ -1,3 +1,23 @@
+- id: comeet
+  title: comeet.life
+  role: Turn what you want to do into actual plan, with actual people.
+  tags:
+    - Design
+    - Engineering
+  description: Website design & development for Comeet, a mobile community platform bringing people together through shared interests.
+  date: 2026-09
+  pinned: false
+  media:
+    - saTfrThU402wPFeAguKLLfxsnG76nYelDk54aJ5YuLeo
+    - 5h1w4mL7nY3XYmh6AhijMaOXhUgwpuq4B92zi4ekegk
+    - src: /work/comeet-phone-card.webp
+    - b2em00KcvFlhqO71EJ99y9FL3602Ug1I8DFXEYarMzppw
+    - FF4tl2aCR4vch3AhM6WdWbq7XIM01nPu00QVIRYV5nPpQ
+    - src: /work/comeet-philosophy.webp
+  ctas:
+    - label: Visit the site
+      href: https://comeet.life
+
 - id: generated-wiki
   title: Generated.Wiki
   role: Encyclopedia that adapts its explanation to your persona and reading level.
