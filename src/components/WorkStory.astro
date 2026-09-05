@@ -92,6 +92,50 @@ const isImage = (slide: StorySlide) => {
     const templates = story.querySelectorAll<HTMLTemplateElement>("template[data-story-slide]")
     let active = 0
     let visible = false
+    let advanceTimer: number | undefined
+    let scheduleVersion = 0
+
+    const stopAutoAdvance = () => {
+      window.clearTimeout(advanceTimer)
+      advanceTimer = undefined
+      scheduleVersion += 1
+    }
+
+    const scheduleAutoAdvance = () => {
+      stopAutoAdvance()
+      if (!visible || templates.length < 2) return
+
+      const activeLayer = layers?.lastElementChild
+      if (!activeLayer) return
+
+      const version = scheduleVersion
+      const advanceAfter = (delay: number) => {
+        if (version !== scheduleVersion) return
+        advanceTimer = window.setTimeout(() => {
+          if (version === scheduleVersion && visible) goTo((active + 1) % templates.length)
+        }, delay)
+      }
+
+      const player = activeLayer.querySelector<MuxPlayerElement>("mux-player")
+      if (!player) {
+        advanceAfter(5_000)
+        return
+      }
+
+      const scheduleForVideo = () => {
+        if (version !== scheduleVersion || activeLayer !== layers?.lastElementChild) return
+        if (!Number.isFinite(player.duration) || player.duration <= 0) return
+
+        const remaining = Math.max(0, player.duration - player.currentTime)
+        advanceAfter(remaining * 1_000)
+      }
+
+      if (Number.isFinite(player.duration) && player.duration > 0) {
+        scheduleForVideo()
+      } else {
+        player.addEventListener("loadedmetadata", scheduleForVideo, { once: true })
+      }
+    }
 
     const syncPlayback = () => {
       const activeLayer = layers?.lastElementChild
@@ -106,7 +150,10 @@ const isImage = (slide: StorySlide) => {
 
     const goTo = (index: number) => {
       const next = Math.max(0, Math.min(templates.length - 1, index))
-      if (next === active || !layers) return
+      if (next === active || !layers) {
+        scheduleAutoAdvance()
+        return
+      }
       const template = templates[next]
       const layer = template?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined
       if (!layer) return
@@ -118,6 +165,7 @@ const isImage = (slide: StorySlide) => {
       layers.append(layer)
       requestAnimationFrame(() => requestAnimationFrame(() => layer.classList.replace("opacity-0", "opacity-100")))
       syncPlayback()
+      scheduleAutoAdvance()
 
       layer.addEventListener(
         "transitionend",
@@ -146,6 +194,7 @@ const isImage = (slide: StorySlide) => {
       ([entry]) => {
         visible = entry?.isIntersecting ?? false
         syncPlayback()
+        scheduleAutoAdvance()
       },
       { threshold: 0.5 },
     )

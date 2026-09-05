@@ -8,6 +8,12 @@ export default defineConfig({
   output: "static",
   integrations: [react(), icon()],
   vite: {
+    oxc: {
+      exclude: /astro&type=script/,
+    },
     plugins: [tailwindcss()],
+    resolve: {
+      tsconfigPaths: false,
+    },
   },
 })
